@@ -1,17 +1,8 @@
+# Learning, The CirrusMio Way
+
 Put simply, the CirrusMio Way is continuous improvement.
 
-Software does not start out being robust. It gets to a point of success through
-many small wins and meaningful tweaks. This is one of the core tenants of agile
-development -- constant reassessment and setting attainable goals will drive a
-project forward.
-
-Businesses are not immediately successful enterprises. It requires monitoring of
-competitors, assessment of market opportunities, and skillful execution to take
-off. It typically takes many attempts to enter a market before there is a decent
-amount of success. By continuously improving our relationship with customers and
-defining our place in the market, we can iterate toward success.
-
-It is important to constantly develop our team as well. We want to improve the
+It is important to constantly develop our skills. We want to improve the
 value of each individual while also improving the relationship of the team as a
 whole. The best way to achieve this is to offer a path for individual mastery,
 and introduce more and varied interactions with your peers.
@@ -28,9 +19,20 @@ Your success is likely if you maintain:
 * determination
 * curiosity
 
-## Foundations
+Use the following pages to maintain a list of resources and provide comments and
+feedback on them. Each page should list the key takeaways of following the
+tutorials, and how we would judge that a student has learned the required
+techniques to be qualified at a particular level (beginner, intermediate,
+advanced). There is no pathway for the expert level, becuase it is simply
+experience and interaction that provide the last mile. There will never be a
+course that can compensate for lack of experience.
 
-Broken down by technology:
+#### A note on providing updates
+
+This project is on [GitHub][gh]. Please fork and send a pull request to add
+resources or reviews for any of the materials.
+
+## Foundations
 
 * [Beginning Ruby][ruby]
 * [Beginning HTML 5][html]
@@ -39,12 +41,7 @@ Broken down by technology:
 * [Beginning Amazon Web Services]
 * [Beginning Git]
 
-Use the above pages to maintain a list of tutorials and provide comments and
-feedback on them.
-
-## Intermediate Levels
-
-Frameworks
+## Intermediate Levels and Frameworks
 
 * [[Learning Rails Controllers]]
 * [[Learning Rails Models]]
@@ -59,6 +56,7 @@ Frameworks
 * [[Mastering JavaScript]]
 * [[Mastering Git]]
 
+[gh]: http://github.com/CirrusMio/learning-things
 [ruby]: beginning-ruby.html
 [html]: beginning-html5.html
 [js]: beginning-javascript.html
