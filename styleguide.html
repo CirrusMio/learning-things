@@ -6,7 +6,9 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2 id="theory">Theory</h2>
+			<h1 id="cirrusmio-style-guide">CirrusMio Style Guide</h1>
+
+<h2 id="theory">Theory</h2>
 
 <ul>
   <li>Easy to maintain code should:
@@ -42,10 +44,13 @@ or in its own gem.</li>
   <li>Every object under test has exactly one file in <code>test/unit</code>.</li>
 </ul>
 
-<p><em>Examples</em>
-* <code>app/models/ability.rb</code>
-* <code>lib/test/unit/*</code>
-* <code>test/unit/profile_test.rb</code></p>
+<p><em>Examples</em></p>
+
+<ul>
+  <li><code>app/models/ability.rb</code></li>
+  <li><code>lib/test/unit/*</code></li>
+  <li><code>test/unit/profile_test.rb</code></li>
+</ul>
 
 <h3 id="file-composition">File Composition:</h3>
 
@@ -81,53 +86,52 @@ modules.</li>
 <h4 id="examples">Examples</h4>
 
 <ul>
-  <li>
-    <p><em>duckhunt</em>, an executable in a gem</p>
-
-    <p>```ruby
-  #!/usr/bin/env ruby
-  # encoding: utf-8</p>
-
-    <p>require &lsquo;ostruct&rsquo;
-  require &lsquo;gosu&rsquo;
-  require_relative &lsquo;lib/duckhunt/bloodhound&rsquo;
-  # NOTE: ostruct is STDLIB, gosu is a gem, the other is local to this library</p>
-
-    <p>if  == <strong>FILE</strong>
-    mechanics = OpenStruct.new(kb: Gosu.has_keyboard?, mouse: Gosu.has_mouse?))
-    game = Duckhunt.new(mechanics)
-    game.main_character = Duckhunt::Bloodhound
-    game.play
-  end
-  ```</p>
-  </li>
-  <li>
-    <p><em>app/models/television.rb</em>, a business model in an app&rsquo;s library
-  ```ruby
-  require &lsquo;codec/hdtv&rsquo;</p>
-
-    <p># Television is responsible for playing a picture and sound stream.
-  #
-  # A television can get +TelevisionReception+ from many +Channels+ that
-  # provide that stream.
-  #
-  class Television</p>
-
-    <pre><code># A codec de-scrambles a stream into a playable representation.
-class &lt;&lt; self
-  attr_accessor :playback_codec
-end
-self.playback_codec = Codec::HDTV
-
-# Create a television
-def initialize start_channel
-  initialize_screen
-  initialize_codec
-  tune_to start_channel
-end   end   ```
-</code></pre>
-  </li>
+  <li><em>duckhunt</em>, an executable in a gem</li>
 </ul>
+
+<pre class="language-ruby"><code>    #!/usr/bin/env ruby
+    # encoding: utf-8
+
+    require 'ostruct'
+    require 'gosu'
+    require_relative 'lib/duckhunt/bloodhound'
+    # NOTE: ostruct is STDLIB, gosu is a gem, the other is local to this library
+
+    if  == __FILE__
+      mechanics = OpenStruct.new(kb: Gosu.has_keyboard?, mouse: Gosu.has_mouse?))
+      game = Duckhunt.new(mechanics)
+      game.main_character = Duckhunt::Bloodhound
+      game.play
+    end
+</code></pre>
+
+<ul>
+  <li><em>app/models/television.rb</em>, a business model in an app&rsquo;s library</li>
+</ul>
+
+<pre class="language-ruby"><code>    require 'codec/hdtv'
+
+    # Television is responsible for playing a picture and sound stream.
+    #
+    # A television can get +TelevisionReception+ from many +Channels+ that
+    # provide that stream.
+    #
+    class Television
+
+      # A codec de-scrambles a stream into a playable representation.
+      class &lt;&lt; self
+        attr_accessor :playback_codec
+      end
+      self.playback_codec = Codec::HDTV
+
+      # Create a television
+      def initialize start_channel
+        initialize_screen
+        initialize_codec
+        tune_to start_channel
+      end
+    end
+</code></pre>
 
 <h3 id="block-style">Block style:</h3>
 
@@ -135,192 +139,199 @@ end   end   ```
   <li>Use <code>{...}</code> when defining blocks on one line.</li>
   <li>Use <code>do...end</code> for multiline blocks for side-effects, or when DSL
 authors prefer it.</li>
-  <li>
-    <p>Use <code>{...}</code> for multiline blocks where the return value is relevant.
-  ```ruby
-  multiples = numbers.map {|n| n * 5 }</p>
-
-    <p>def select_primes
-    select {|x|
-      factors = factorize_in_constant_time(x)
-      factors.length == 2
-    }
-  end</p>
-
-    <p>create_task do |task|
-    task.execute = &lsquo;kill -9 init&rsquo;
-  end
-  ```</p>
-  </li>
-  <li>Blocks are spaced out from their calling function.</li>
-  <li>
-    <p>Blocks end with a space before <code>}</code> (with exceptions for making it the 79th
-character and avoiding line wrapping).
-  ```ruby
-  # Yes
-  new_image = pixels.map {|px| px * alpha_boost }
-  irc_bot.register_callback(&lsquo;PING&rsquo;) { pong }</p>
-
-    <p># No
-  new_image=pixels.map { | px |px*alpha_boost}
-  irc_bot.register_callback(&lsquo;PING&rsquo;){pong}
-  ```</p>
-  </li>
-  <li>
-    <p>Blocks that are called by functions that are doing assignment wrap below the
-start of their capturing/calling method, not under the assigned variable.
-  ```ruby
-  # Yes
-  applicable_results = my_long_named_list_of_things.select {|thing|
-                         ThingSelector.new(thing).is_applicable? }</p>
-
-    <p># Maybe
-  applicable_results = my_long_named_list_of_things.select {|thing|
-                         ThingSelector.new(thing).is_applicable?
-                       }</p>
-
-    <p># No
-  applicable_results = my_long_named_list_of_things.select {|thing|
-    ThingSelector.new(thing).is_applicable?  }</p>
-
-    <p># No
-  applicable_results = my_long_named_list_of_things.select {|thing|
-    ThingSelector.new(thing).is_applicable?
-  }
-  ```</p>
-  </li>
+  <li>Use <code>{...}</code> for multiline blocks where the return value is relevant.</li>
 </ul>
+
+<pre class="language-ruby"><code>    multiples = numbers.map {|n| n * 5 }
+
+    def select_primes
+      select {|x|
+        factors = factorize_in_constant_time(x)
+        factors.length == 2
+      }
+    end
+
+    create_task do |task|
+      task.execute = 'kill -9 init'
+    end
+</code></pre>
+
+<ul>
+  <li>Blocks are spaced out from their calling function.</li>
+  <li>Blocks end with a space before <code>}</code> (with exceptions for making it the 79th
+character and avoiding line wrapping).</li>
+</ul>
+
+<pre class="language-ruby"><code>    # Yes
+    new_image = pixels.map {|px| px * alpha_boost }
+    irc_bot.register_callback('PING') { pong }
+
+    # No
+    new_image=pixels.map { | px |px*alpha_boost}
+    irc_bot.register_callback('PING'){pong}
+</code></pre>
+
+<ul>
+  <li>Blocks that are called by functions that are doing assignment wrap below the
+start of their capturing/calling method, not under the assigned variable.</li>
+</ul>
+
+<pre class="language-ruby"><code>    # Yes
+    applicable_results = my_long_named_list_of_things.select {|thing|
+                           ThingSelector.new(thing).is_applicable? }
+
+    # Maybe
+    applicable_results = my_long_named_list_of_things.select {|thing|
+                           ThingSelector.new(thing).is_applicable?
+                         }
+
+    # No
+    applicable_results = my_long_named_list_of_things.select {|thing|
+      ThingSelector.new(thing).is_applicable?  }
+
+    # No
+    applicable_results = my_long_named_list_of_things.select {|thing|
+      ThingSelector.new(thing).is_applicable?
+    }
+</code></pre>
 
 <h3 id="flow-control">Flow control:</h3>
 
 <ul>
-  <li>
-    <p>Avoid <code>for</code> in favor of more ruby-like idioms.
-  ```ruby
-  # Yes
-  presidents.each {|prez| War.new(prez, Country.pick_random) }</p>
+  <li>Avoid <code>for</code> in favor of more ruby-like idioms.</li>
+</ul>
 
-    <p># No
-  for prez in presidents
-      War.new(prez, Country.pick_random)
-  end
-  ```</p>
-  </li>
-  <li>
-    <p>Never use <code>then</code>, except in <code>case</code> statements where all cases are one line.
-  ```ruby
-  # Yes
-  case pig.fly_type
-  when :none then a_ok
-  when :in_a_plane then close_one
-  when :with_wings then hell.feeze_over!
-  else pig_doctor.check_up_on(pig)
-  end</p>
+<pre class="language-ruby"><code>    # Yes
+    presidents.each {|prez| War.new(prez, Country.pick_random) }
 
-    <p># No
-  case bird.dirtiness_with?(source_bird)
-  when :only_on_weekends_when_nobody_is_home
-    pull_the_curtains
-  when :never then breathe_easy
-  end
-  ```</p>
-  </li>
-  <li>Use <code>&amp;&amp;</code>/<code>||</code> for boolean expressions, <code>and</code>/<code>or</code> for control flow.</li>
-  <li>
-    <p>Use <code>not</code> with words, <code>!</code> with symbols
-  ```ruby</p>
-
-    <p>def handle_input string
-    if ast=parse and validate(ast)
-      compile ast, target: ForthMachine
+    # No
+    for prez in presidents
+        War.new(prez, Country.pick_random)
     end
-  end</p>
+</code></pre>
 
-    <p>if pig.flying? and not hell.frozen_over?
-    prepare_for_apocolypse
-  else
-    carry_on
-  end</p>
+<ul>
+  <li>Never use <code>then</code>, except in <code>case</code> statements where all cases are one line.</li>
+</ul>
 
-    <p>self.invisible = !self.visible_to(:robots) &amp;&amp; !self.visible_to(:aliens)
-  ```</p>
-  </li>
-  <li>
-    <p>Avoid multiline <code>?:</code>, use <code>if</code>.
-  ```ruby
-  # Yes
-  if long_object_name.long_method_name
-    long_variable = assignment_from_somewhere_else
-  else
-    long_variable = nil
-  end</p>
+<pre class="language-ruby"><code>    # Yes
+    case pig.fly_type
+    when :none then a_ok
+    when :in_a_plane then close_one
+    when :with_wings then hell.feeze_over!
+    else pig_doctor.check_up_on(pig)
+    end
 
-    <p># No
-  long_varaible = long_object_name.long_method_name ? \
-                      assignment_from_somewhere_else : nil
-  ```</p>
-  </li>
-  <li>
-    <p>Align <code>when</code> and <code>else</code> with <code>case</code>.
-  ```ruby
-  # YES
-  case foo
-  when /bar/
-    raise &lsquo;baz&rsquo;
-  else
-    print &lsquo;not bar&rsquo;
-  end</p>
+    # No
+    case bird.dirtiness_with?(source_bird)
+    when :only_on_weekends_when_nobody_is_home
+      pull_the_curtains
+    when :never then breathe_easy
+    end
+</code></pre>
 
-    <p># NO
-  case foo
-    when /bar/
-      raise &lsquo;baz&rsquo;
+<ul>
+  <li>Use <code>&amp;&amp;</code>/<code>||</code> for boolean expressions, <code>and</code>/<code>or</code> for control flow.</li>
+  <li>Use <code>not</code> with words, <code>!</code> with symbols</li>
+</ul>
+
+<pre class="language-ruby"><code>    def handle_input string
+      if ast=parse and validate(ast)
+        compile ast, target: ForthMachine
+      end
+    end
+
+    if pig.flying? and not hell.frozen_over?
+      prepare_for_apocolypse
     else
-      puts &lsquo;not bar&rsquo;
-  end
-  ```</p>
-  </li>
+      carry_on
+    end
+
+    self.invisible = !self.visible_to(:robots) &amp;&amp; !self.visible_to(:aliens)
+</code></pre>
+
+<ul>
+  <li>Avoid multiline <code>?:</code>, use <code>if</code>.</li>
+</ul>
+
+<pre class="language-ruby"><code>    # Yes
+    if long_object_name.long_method_name
+      long_variable = assignment_from_somewhere_else
+    else
+      long_variable = nil
+    end
+
+    # No
+    long_varaible = long_object_name.long_method_name ? \
+                        assignment_from_somewhere_else : nil
+</code></pre>
+
+<ul>
+  <li>Align <code>when</code> and <code>else</code> with <code>case</code>.</li>
+</ul>
+
+<pre class="language-ruby"><code>    # YES
+    case foo
+    when /bar/
+      raise 'baz'
+    else
+      print 'not bar'
+    end
+
+    # NO
+    case foo
+      when /bar/
+        raise 'baz'
+      else
+        puts 'not bar'
+    end
+</code></pre>
+
+<ul>
   <li>When writing a check in a conditional, the tested value comes first.</li>
   <li>Avoid <code>return</code> when the last line is at the outermost level.</li>
   <li>Use explicit <code>return</code> when in a conditional.</li>
-  <li>Use explicit <code>return</code> when short-circuiting or guarding.
-  <code>ruby
-  def robot_companion_type bot_attributes
-    return Chumby if bot_attributes.empty?
-    if bot_attributes.exists_in_future?
-        return T1000
-    end
-    RoboCop
-  end
- </code></li>
+  <li>Use explicit <code>return</code> when short-circuiting or guarding.</li>
 </ul>
+
+<pre class="language-ruby"><code>    def robot_companion_type bot_attributes
+      return Chumby if bot_attributes.empty?
+      if bot_attributes.exists_in_future?
+          return T1000
+      end
+      RoboCop
+    end
+</code></pre>
 
 <h3 id="classes">Classes:</h3>
 
 <ul>
-  <li>Classes have a leading comment like the following:
-  <code>rdoc
-  # ClassName performs this responsibility.
-  #
-  # This is gramaticaly correct english with proper spelling and
-  # punctuation.  The first line was *only* one line.  This paragraph
-  # explains a bit more about what the class does.
-  #
-  # This paragraph talks about how to interface with this class.  All of
-  # these lines are wrapping at 80 characters.
-  #
-  # = High-level Concept
-  #
-  # Knowledge about interoperations, architecutural impact, or specific
-  # uses of this class can be placed under their own heading.
-  #
-  # *Give lots of examples*
-  #
-  #    # The 'peek' operation has an inverse of 'poke'.
-  #    peek_instance = MyClass.new('peek')
-  #    peek_instance.inverse #=&gt; "poke"
-  #
- </code></li>
+  <li>Classes have a leading comment like the following:</li>
+</ul>
+
+<pre class="language-ruby"><code>    # ClassName performs this responsibility.
+    #
+    # This is gramaticaly correct english with proper spelling and
+    # punctuation.  The first line was *only* one line.  This paragraph
+    # explains a bit more about what the class does.
+    #
+    # This paragraph talks about how to interface with this class.  All of
+    # these lines are wrapping at 80 characters.
+    #
+    # = High-level Concept
+    #
+    # Knowledge about interoperations, architecutural impact, or specific
+    # uses of this class can be placed under their own heading.
+    #
+    # *Give lots of examples*
+    #
+    #    # The 'peek' operation has an inverse of 'poke'.
+    #    peek_instance = MyClass.new('peek')
+    #    peek_instance.inverse #=&gt; "poke"
+    #
+</code></pre>
+
+<ul>
   <li>There is no empty line between a comment and class definition.</li>
   <li>There should be one empty line between <code>def</code>s in a class or module.</li>
   <li><code>private</code> or <code>public</code> should be isolated by a single blank line before
@@ -328,45 +339,42 @@ and after.</li>
   <li>Use <code>private</code> and <code>public</code> at class scope, not for individual methods.</li>
   <li>Use <code>def self.method</code> to define singleton methods,
 instead of <code>class &lt;&lt; self</code>.</li>
-  <li>
-    <p>Use RDoc and its conventions for API documentation. Put an empty comment
+  <li>Use RDoc and its conventions for API documentation. Put an empty comment
 line between the body of the comment and the <code>def</code> except for one-line
-documentation.
-  ```ruby</p>
-
-    <p># Check for the meaning of life.
-  #
-  # Return true if:
-  # * the attempted_answer is greater than 41
-  # * the attempted_answer is less than 43
-  #
-  def check_for_life attempted_answer
-    return attempted_answer == 42
-  end</p>
-
-    <p># Life is random (and absurd), give users a number to check with.
-  def get_attempt
-    if guess = random(2012)
-      guess += 1
-    end
-    guess
-  end</p>
-
-    <p>private</p>
-
-    <p>def one
-    return 1
-  end</p>
-
-    <p>def two
-    return 2
-  end</p>
-
-    <p># NO
-  private :check_for_life
-  ```</p>
-  </li>
+documentation.</li>
 </ul>
+
+<pre class="language-ruby"><code>    # Check for the meaning of life.
+    #
+    # Return true if:
+    # * the attempted_answer is greater than 41
+    # * the attempted_answer is less than 43
+    #
+    def check_for_life attempted_answer
+      return attempted_answer == 42
+    end
+
+    # Life is random (and absurd), give users a number to check with.
+    def get_attempt
+      if guess = random(2012)
+        guess += 1
+      end
+      guess
+    end
+
+    private
+
+    def one
+      return 1
+    end
+
+    def two
+      return 2
+    end
+
+    # NO
+    private :check_for_life
+</code></pre>
 
 <h3 id="methods">Methods:</h3>
 
@@ -374,91 +382,94 @@ documentation.
   <li>Methods either express the workflow or perform a single task.</li>
   <li>Task-type methods should not call other task-type methods: everything
 terminates at a single, isolated, testable task method.</li>
-  <li>
-    <p>There can be multiple levels of workflow methods.
-  ```ruby
-  #  A good workflow method
-  def  brew
-    add_hot_water
-    add_tea_bag
-    ding_after(steep_time)
-  end</p>
+  <li>There can be multiple levels of workflow methods.</li>
+</ul>
 
-    <p># A good task method.
-  #
-  # Until the resivoir reaches the target temperature (F)
-  # continue adding energy (kwh).
-  #
-  def heat_water target=180, energy_increment=0.001
-    while @resivoir.temperature &lt; target
-      @resivoir.add_energy(energy_increment)
+<pre class="language-ruby"><code>    #  A good workflow method
+    def  brew
+      add_hot_water
+      add_tea_bag
+      ding_after(steep_time)
     end
-  end</p>
 
-    <p># A poor task method (does a task, then calls another task).
-  def add_tea_bag brew=&rsquo;Earl Grey&rsquo;
-    box = @cubbord.get_tea_box
-    bag = box.select {|tea| tea.name == brew}
-    package = bag.unpackage
-    dispose_of_waste(package)
-    add_bag_to_cup(bag)
-  end</p>
+    # A good task method.
+    #
+    # Until the resivoir reaches the target temperature (F)
+    # continue adding energy (kwh).
+    #
+    def heat_water target=180, energy_increment=0.001
+      while @resivoir.temperature &lt; target
+        @resivoir.add_energy(energy_increment)
+      end
+    end
 
-    <p># Rewritten to be more appropriate as workflow.
-  #
-  # Interacting with other entities (cubbord, wastebasket, cup) is
-  # completely encapsulated here.  The workflow can be tested by adding
-  # mocks to return a double object in the case of +bag+ and the other
-  # methods can be stubbed just to check they&rsquo;re getting the right
-  # argument.
-  #
-  def add_teabag brew=&rsquo;Earl Grey&rsquo;
-    bag = select_tea_bag
-    unpackage_and_discard_waste(bag)
-    add_bag_to_cup(bag)
-  end
-  ```</p>
-  </li>
+    # A poor task method (does a task, then calls another task).
+    def add_tea_bag brew='Earl Grey'
+      box = @cubbord.get_tea_box
+      bag = box.select {|tea| tea.name == brew}
+      package = bag.unpackage
+      dispose_of_waste(package)
+      add_bag_to_cup(bag)
+    end
+
+    # Rewritten to be more appropriate as workflow.
+    #
+    # Interacting with other entities (cubbord, wastebasket, cup) is
+    # completely encapsulated here.  The workflow can be tested by adding
+    # mocks to return a double object in the case of +bag+ and the other
+    # methods can be stubbed just to check they're getting the right
+    # argument.
+    #
+    def add_teabag brew='Earl Grey'
+      bag = select_tea_bag
+      unpackage_and_discard_waste(bag)
+      add_bag_to_cup(bag)
+    end
+</code></pre>
+
+<ul>
   <li>Avoid hashes-as-optional-parameters.  For task-type methods this means
 it is probably doing too much, or branching instead of performing a task.
 If you need to modify a workflow function, make a new entry-point for the
 new workflow that encodes all the knowledge instead of having it passed in.</li>
-  <li>
-    <p>Avoid long parameter lists.  Don&rsquo;t cheat with splats or hashes.
-  ```ruby
-  # No
-  def process processing_object, options={}
-    if options[:setup_method]
-      run_setup_method(options[:setup_method])
+  <li>Avoid long parameter lists.  Don&rsquo;t cheat with splats or hashes.</li>
+</ul>
+
+<pre class="language-ruby"><code>    # No
+    def process processing_object, options={}
+      if options[:setup_method]
+        run_setup_method(options[:setup_method])
+      end
+      initial_state = capture_state
+      processing_object.call
+      final_state = capture_state
+      if options[:teardown_method]
+        run_teardown_method(options[:setup_method])
+      end
     end
-    initial_state = capture_state
-    processing_object.call
-    final_state = capture_state
-    if options[:teardown_method]
-      run_teardown_method(options[:setup_method])
+
+    # Yes
+    class Processor
+      attr_accessor :setup_method
+      attr_accessor :teardown_method
+
+      def initialize processing_object
+        @processing_object = processing_object
+      end
+
+      def process
+        setup
+        build_state_comparison do
+          @processing_object.call
+        end
+        teardown
+      end
+
+      # ...
     end
-  end</p>
-
-    <p># Yes
-  class Processor
-    attr_accessor :setup_method
-    attr_accessor :teardown_method</p>
-
-    <pre><code>def initialize processing_object
-  @processing_object = processing_object
-end
-
-def process
-  setup
-  build_state_comparison do
-    @processing_object.call
-  end
-  teardown
-end
-
-# ...   end   ```
 </code></pre>
-  </li>
+
+<ul>
   <li>If sections of a method are logically separate by blank lines, then that&rsquo;s
 probably a sign that those sections should be split into separate methods.</li>
   <li>Avoid long methods.  Try to keep methods at no more than 10 lines long, and 
@@ -478,41 +489,43 @@ Command-query separation (CQS):  http://en.wikipedia.org/wiki/Command-query_sepa
   <li>No parenthesis in method definition.</li>
   <li>Use ruby 1.9 hashes where you can.</li>
   <li>Inline conditionals (trailing conditionals) are fine when both the body and the condition fit on the same line.  If it wraps to a new line, break it into a regular <code>if</code>/<code>unless</code>-<code>end</code> block.</li>
-  <li>
-    <p>Single space between hash key&rsquo;s <code>:</code> and the value.
-  ```ruby
-  # Yes
-  3 + 2
-  thing.perform(param, [first, last])
-  var1 = thing
-  variable_two = other_thing
-  {foo: &lsquo;bar&rsquo;}</p>
+  <li>Single space between hash key&rsquo;s <code>:</code> and the value.</li>
+</ul>
 
-    <p># No
-  3+2
-  thing.perform( param, [ first, last ] )
-  var1          = thing
-  variable_two  = other_thing
-  {foo:&rsquo;bar&rsquo;}
-  {foo =&gt; &lsquo;bar&rsquo;}
-  ```</p>
-  </li>
-  <li>
-    <p>Use parentheses when calling methods with arguments unless it is the only
-thing on the line, passed blocks do not count as arguments in this context.
-  ```ruby
-  # Yes
-  maybe_turtle = soup.ingredients(:protein)
-  soup.add_ingredient turtle, :protein
-  soup.prepare_ingredient(:protien) {|meat| meat.season_with(paprika) }
-  soup.prepare_ingredient :protein, &amp;meat_prep</p>
+<pre class="language-ruby"><code>    # Yes
+    3 + 2
+    thing.perform(param, [first, last])
+    var1 = thing
+    variable_two = other_thing
+    {foo: 'bar'}
 
-    <p># No
-  mabye_turtle = soup.ingredients :protien
-  soup.add_ingredient(turtle, :protein)
-  soup.prepare_ingredient :protein {|meat| meat.season_with(paprika) }
-  ```</p>
-  </li>
+    # No
+    3+2
+    thing.perform( param, [ first, last ] )
+    var1          = thing
+    variable_two  = other_thing
+    {foo:'bar'}
+    {foo =&gt; 'bar'}
+</code></pre>
+
+<ul>
+  <li>Use parentheses when calling methods with arguments unless it is the only
+thing on the line, passed blocks do not count as arguments in this context.</li>
+</ul>
+
+<pre class="language-ruby"><code>    # Yes
+    maybe_turtle = soup.ingredients(:protein)
+    soup.add_ingredient turtle, :protein
+    soup.prepare_ingredient(:protien) {|meat| meat.season_with(paprika) }
+    soup.prepare_ingredient :protein, &amp;meat_prep
+
+    # No
+    mabye_turtle = soup.ingredients :protien
+    soup.add_ingredient(turtle, :protein)
+    soup.prepare_ingredient :protein {|meat| meat.season_with(paprika) }
+</code></pre>
+
+<ul>
   <li>Assignments in the first clause of conditionals are okay.  Do not put spaces around the equals sign in an assignment when it&rsquo;s in a condition.</li>
   <li>Avoid line continuation with backslash where not required.</li>
   <li>When breaking up a long chain over 79 characters, put <code>.</code> on the first line.</li>
@@ -521,44 +534,45 @@ first call on the top line.</li>
   <li>Line up a call with lots of arguments by putting arguments indented to the
 level of the first argument on the top line.  Where not possible, indent 4
 four spaces into the method being called.</li>
-  <li>
-    <p>Closing <code>)</code>, <code>}', and ']' should not be on a line by themselves.
-  </code>``ruby
-  # Yes
-  if score = scoreboard.value(team) and score &gt; 0
-    return &ldquo;#{team} scored #{score} goals&rdquo;
-  end</p>
+  <li>Closing <code>)</code>, `}&rsquo;, and &lsquo;]&rsquo; should not be on a line by themselves.</li>
+</ul>
 
-    <p>time_limit_reached = scoreboard.game_time &lt;= 0
-  mercy_rule_invoked = scoreboard.score_difference &gt; 10
-  if time_limit_reached or mercy_rule_invoked
-    game_over_man!
-  end</p>
+<pre class="language-ruby"><code>    # Yes
+    if score = scoreboard.value(team) and score &gt; 0
+      return "#{team} scored #{score} goals"
+    end
 
-    <p>score.method1().method2(team).method3(time_limit_reached).
-        method4().method5()</p>
+    time_limit_reached = scoreboard.game_time &lt;= 0
+    mercy_rule_invoked = scoreboard.score_difference &gt; 10
+    if time_limit_reached or mercy_rule_invoked
+      game_over_man!
+    end
 
-    <p>variable_name = call_a_really_long_method_with_some_long_argument_names(
-                      this_is_the_first_argument, 2)</p>
+    score.method1().method2(team).method3(time_limit_reached).
+          method4().method5()
 
-    <p># No
-  if scoreboard.game_time &lt;= 0 and \
-      scoreboard.score_difference &gt; 10
-    game_over_man!
-  end
-  ```</p>
-  </li>
+    variable_name = call_a_really_long_method_with_some_long_argument_names(
+                        this_is_the_first_argument, 2)
+
+    # No
+    if scoreboard.game_time &lt;= 0 and \
+        scoreboard.score_difference &gt; 10
+      game_over_man!
+    end
+</code></pre>
+
+<ul>
   <li>Use <code>||=</code> freely.</li>
   <li>Regexp named captures are preferred.</li>
   <li>Use of non-OO regexps is okay, but you must set <code>$0...$9</code> to named variables
 before using them so their intent is clear.</li>
-  <li>Use <code>%r</code> for regexp containing quotes.
-  <code>ruby
-  regexp = %r{[Yy]ou're an? "(?&lt;sarcasm&gt;\w+)" person}
-  regexp =~ "You're an \\"intelligent\\" person"
-  $~[:sarcasm] #=&gt; "intelligent"
- </code></li>
+  <li>Use <code>%r</code> for regexp containing quotes.</li>
 </ul>
+
+<pre class="language-ruby"><code>    regexp = %r{[Yy]ou're an? "(?&lt;sarcasm&gt;\w+)" person}
+    regexp =~ "You're an \\"intelligent\\" person"
+    $~[:sarcasm] #=&gt; "intelligent"
+</code></pre>
 
 <h3 id="naming">Naming:</h3>
 
@@ -598,38 +612,36 @@ sentence for overview, followed by a newline, followed by exposition.</li>
   <li>When creating a TODO, include ownership information.</li>
   <li>For right now, when using static strings make a note for i18n. These
 do not have to have ownership information.</li>
-  <li>
-    <p>Do not use comments or whitespace as decoration.
-```ruby
-# A background worker for routing unicorns to greener pastures.
-#
-# This worker is created when a <code>PastureChecker</code> process notices
-# that a pasture is overcrowded or otherwise unhelathy.  They
-# can also be created via the console for administrative tasks.
-#
-# Notice the first line of this comment was a clear sentence.  The entire
-# thing reads like two developers talking to one another.  There are
-# blank lines (still indented and containing the hash mark, but no
-# trailing space or other characters) between paragraphs.
-#
-class UnicornShuffler &lt; BasicWorker</p>
-
-    <p># Implement the background callback.
-  #
-  # This directs a unicorn to fly to a new location if their old location
-  # was unsuitable.  The new location is determined by the Unicorn in
-  # flight, we have simply disallowed this particular location.
-  def self.process unicorn, old_pasture
-    flight = UnicornFlight.create(unicorn)
-    # TODO: i18n
-    flight.disallow_pasture old_pasture, reason: &lsquo;Not green enough&rsquo;
-    # TODO(todd): disallow all pastures in a 3 mile radius.
-    flight.take_off!
-  end
-end
-```</p>
-  </li>
+  <li>Do not use comments or whitespace as decoration.</li>
 </ul>
+
+<pre class="language-ruby"><code>    # A background worker for routing unicorns to greener pastures.
+    #
+    # This worker is created when a `PastureChecker` process notices
+    # that a pasture is overcrowded or otherwise unhelathy.  They
+    # can also be created via the console for administrative tasks.
+    #
+    # Notice the first line of this comment was a clear sentence.  The entire
+    # thing reads like two developers talking to one another.  There are
+    # blank lines (still indented and containing the hash mark, but no
+    # trailing space or other characters) between paragraphs.
+    #
+    class UnicornShuffler &lt; BasicWorker
+
+      # Implement the background callback.
+      #
+      # This directs a unicorn to fly to a new location if their old location
+      # was unsuitable.  The new location is determined by the Unicorn in
+      # flight, we have simply disallowed this particular location.
+      def self.process unicorn, old_pasture
+        flight = UnicornFlight.create(unicorn)
+        # TODO: i18n
+        flight.disallow_pasture old_pasture, reason: 'Not green enough'
+        # TODO(todd): disallow all pastures in a 3 mile radius.
+        flight.take_off!
+      end
+    end
+</code></pre>
 
 <h3 id="testing">Testing:</h3>
 
@@ -682,8 +694,10 @@ list.  Recommended: PEP-8, PEP-257.</li>
 
 <h3 id="related">Related:</h3>
 
-<p>http://confreaks.com/videos/77-mwrc2009-the-building-blocks-of-modularity
-http://www.youtube.com/watch?v=npOGOmkxuio</p>
+<ul>
+  <li>http://confreaks.com/videos/77-mwrc2009-the-building-blocks-of-modularity</li>
+  <li>http://www.youtube.com/watch?v=npOGOmkxuio</li>
+</ul>
 
 		</div>
 		<script src="//code.jquery.com/jquery.js"></script>

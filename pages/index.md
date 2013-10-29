@@ -56,7 +56,13 @@ resources or reviews for any of the materials.
 * [[Mastering JavaScript]]
 * [[Mastering Git]]
 
+## Internal Processes and Procedures
+
+* [Style Standards][style]
+
 [gh]: http://github.com/CirrusMio/learning-things
 [ruby]: beginning-ruby.html
 [html]: beginning-html5.html
 [js]: beginning-javascript.html
+
+[style]: styleguide.html

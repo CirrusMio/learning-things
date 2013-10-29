@@ -1,3 +1,5 @@
+# CirrusMio Style Guide
+
 ## Theory
 
 * Easy to maintain code should:
@@ -26,6 +28,7 @@
 * Every object under test has exactly one file in `test/unit`.
 
 *Examples*
+
 * `app/models/ability.rb`
 * `lib/test/unit/*`
 * `test/unit/profile_test.rb`
@@ -61,7 +64,7 @@
 
 * *duckhunt*, an executable in a gem
 
-    ```ruby
+~~~
     #!/usr/bin/env ruby
     # encoding: utf-8
 
@@ -76,9 +79,12 @@
       game.main_character = Duckhunt::Bloodhound
       game.play
     end
-    ```
+~~~
+{: .language-ruby}
+
 * *app/models/television.rb*, a business model in an app's library
-    ```ruby
+
+~~~
     require 'codec/hdtv'
 
     # Television is responsible for playing a picture and sound stream.
@@ -101,7 +107,8 @@
         tune_to start_channel
       end
     end
-    ```
+~~~
+{: .language-ruby}
 
 ### Block style:
 
@@ -109,24 +116,28 @@
 * Use `do...end` for multiline blocks for side-effects, or when DSL
   authors prefer it.
 * Use `{...}` for multiline blocks where the return value is relevant.
-    ```ruby
+
+~~~
     multiples = numbers.map {|n| n * 5 }
-    
+
     def select_primes
       select {|x|
         factors = factorize_in_constant_time(x)
         factors.length == 2
       }
     end
-    
+
     create_task do |task|
       task.execute = 'kill -9 init'
     end
-    ```
+~~~
+{: .language-ruby}
+
 * Blocks are spaced out from their calling function.
 * Blocks end with a space before `}` (with exceptions for making it the 79th
   character and avoiding line wrapping).
-    ```ruby
+
+~~~
     # Yes
     new_image = pixels.map {|px| px * alpha_boost }
     irc_bot.register_callback('PING') { pong }
@@ -134,10 +145,13 @@
     # No
     new_image=pixels.map { | px |px*alpha_boost}
     irc_bot.register_callback('PING'){pong}
-    ```
+~~~
+{: .language-ruby}
+
 * Blocks that are called by functions that are doing assignment wrap below the
   start of their capturing/calling method, not under the assigned variable.
-    ```ruby
+
+~~~
     # Yes
     applicable_results = my_long_named_list_of_things.select {|thing|
                            ThingSelector.new(thing).is_applicable? }
@@ -155,12 +169,14 @@
     applicable_results = my_long_named_list_of_things.select {|thing|
       ThingSelector.new(thing).is_applicable?
     }
-    ```
+~~~
+{: .language-ruby}
 
 ### Flow control:
 
 * Avoid `for` in favor of more ruby-like idioms.
-    ```ruby
+
+~~~
     # Yes
     presidents.each {|prez| War.new(prez, Country.pick_random) }
 
@@ -168,9 +184,12 @@
     for prez in presidents
         War.new(prez, Country.pick_random)
     end
-    ```
+~~~
+{: .language-ruby}
+
 * Never use `then`, except in `case` statements where all cases are one line.
-    ```ruby
+
+~~~
     # Yes
     case pig.fly_type
     when :none then a_ok
@@ -178,18 +197,20 @@
     when :with_wings then hell.feeze_over!
     else pig_doctor.check_up_on(pig)
     end
-    
+
     # No
     case bird.dirtiness_with?(source_bird)
     when :only_on_weekends_when_nobody_is_home
       pull_the_curtains
     when :never then breathe_easy
     end
-    ```
+~~~
+{: .language-ruby}
+
 * Use `&&`/`||` for boolean expressions, `and`/`or` for control flow.
 * Use `not` with words, `!` with symbols
-    ```ruby
 
+~~~
     def handle_input string
       if ast=parse and validate(ast)
         compile ast, target: ForthMachine
@@ -203,22 +224,28 @@
     end
 
     self.invisible = !self.visible_to(:robots) && !self.visible_to(:aliens)
-    ```
+~~~
+{: .language-ruby}
+
 * Avoid multiline `?:`, use `if`.
-    ```ruby
+
+~~~
     # Yes
     if long_object_name.long_method_name
       long_variable = assignment_from_somewhere_else
     else
       long_variable = nil
     end
-    
+
     # No
     long_varaible = long_object_name.long_method_name ? \
                         assignment_from_somewhere_else : nil
-    ```
+~~~
+{: .language-ruby}
+
 * Align `when` and `else` with `case`.
-    ```ruby
+
+~~~
     # YES
     case foo
     when /bar/
@@ -234,12 +261,15 @@
       else
         puts 'not bar'
     end
-    ```
+~~~
+{: .language-ruby}
+
 * When writing a check in a conditional, the tested value comes first.
 * Avoid `return` when the last line is at the outermost level.
 * Use explicit `return` when in a conditional.
 * Use explicit `return` when short-circuiting or guarding.
-    ```ruby
+
+~~~
     def robot_companion_type bot_attributes
       return Chumby if bot_attributes.empty?
       if bot_attributes.exists_in_future?
@@ -247,12 +277,15 @@
       end
       RoboCop
     end
-    ```
+~~~
+{: .language-ruby}
+
 
 ### Classes:
 
 * Classes have a leading comment like the following:
-    ```rdoc
+
+~~~
     # ClassName performs this responsibility.
     #
     # This is gramaticaly correct english with proper spelling and
@@ -273,7 +306,9 @@
     #    peek_instance = MyClass.new('peek')
     #    peek_instance.inverse #=> "poke"
     #
-    ```
+~~~
+{: .language-ruby}
+
 * There is no empty line between a comment and class definition.
 * There should be one empty line between `def`s in a class or module.
 * `private` or `public` should be isolated by a single blank line before
@@ -284,8 +319,8 @@
 * Use RDoc and its conventions for API documentation. Put an empty comment
   line between the body of the comment and the `def` except for one-line
   documentation.
-    ```ruby
 
+~~~
     # Check for the meaning of life.
     #
     # Return true if:
@@ -316,7 +351,8 @@
 
     # NO
     private :check_for_life
-    ```
+~~~
+{: .language-ruby}
 
 ### Methods:
 
@@ -324,7 +360,8 @@
 * Task-type methods should not call other task-type methods: everything
   terminates at a single, isolated, testable task method.
 * There can be multiple levels of workflow methods.
-    ```ruby
+
+~~~
     #  A good workflow method
     def  brew
       add_hot_water
@@ -365,13 +402,16 @@
       unpackage_and_discard_waste(bag)
       add_bag_to_cup(bag)
     end
-    ```
+~~~
+{: .language-ruby}
+
 * Avoid hashes-as-optional-parameters.  For task-type methods this means
   it is probably doing too much, or branching instead of performing a task.
   If you need to modify a workflow function, make a new entry-point for the
   new workflow that encodes all the knowledge instead of having it passed in.
 * Avoid long parameter lists.  Don't cheat with splats or hashes.
-    ```ruby
+
+~~~
     # No
     def process processing_object, options={}
       if options[:setup_method]
@@ -404,7 +444,9 @@
 
       # ...
     end
-    ```
+~~~
+{: .language-ruby}
+
 * If sections of a method are logically separate by blank lines, then that's
   probably a sign that those sections should be split into separate methods.
 * Avoid long methods.  Try to keep methods at no more than 10 lines long, and 
@@ -423,7 +465,8 @@
 * Use ruby 1.9 hashes where you can.
 * Inline conditionals (trailing conditionals) are fine when both the body and the condition fit on the same line.  If it wraps to a new line, break it into a regular `if`/`unless`-`end` block.
 * Single space between hash key's `:` and the value.
-    ```ruby
+
+~~~
     # Yes
     3 + 2
     thing.perform(param, [first, last])
@@ -438,10 +481,13 @@
     variable_two  = other_thing
     {foo:'bar'}
     {foo => 'bar'}
-    ```
+~~~
+{: .language-ruby}
+
 * Use parentheses when calling methods with arguments unless it is the only
   thing on the line, passed blocks do not count as arguments in this context.
-    ```ruby
+
+~~~
     # Yes
     maybe_turtle = soup.ingredients(:protein)
     soup.add_ingredient turtle, :protein
@@ -452,7 +498,9 @@
     mabye_turtle = soup.ingredients :protien
     soup.add_ingredient(turtle, :protein)
     soup.prepare_ingredient :protein {|meat| meat.season_with(paprika) }
-    ```
+~~~
+{: .language-ruby}
+
 * Assignments in the first clause of conditionals are okay.  Do not put spaces around the equals sign in an assignment when it's in a condition.
 * Avoid line continuation with backslash where not required.
 * When breaking up a long chain over 79 characters, put `.` on the first line.
@@ -462,7 +510,8 @@
   level of the first argument on the top line.  Where not possible, indent 4
   four spaces into the method being called.
 * Closing `)`, `}', and ']' should not be on a line by themselves.
-    ```ruby
+
+~~~
     # Yes
     if score = scoreboard.value(team) and score > 0
       return "#{team} scored #{score} goals"
@@ -479,23 +528,27 @@
 
     variable_name = call_a_really_long_method_with_some_long_argument_names(
                         this_is_the_first_argument, 2)
-    
+
     # No
     if scoreboard.game_time <= 0 and \
         scoreboard.score_difference > 10
       game_over_man!
     end
-    ```
+~~~
+{: .language-ruby}
+
 * Use `||=` freely.
 * Regexp named captures are preferred.
 * Use of non-OO regexps is okay, but you must set `$0...$9` to named variables
   before using them so their intent is clear.
 * Use `%r` for regexp containing quotes.
-    ```ruby
+
+~~~
     regexp = %r{[Yy]ou're an? "(?<sarcasm>\w+)" person}
     regexp =~ "You're an \\"intelligent\\" person"
     $~[:sarcasm] #=> "intelligent"
-    ```
+~~~
+{: .language-ruby}
 
 ### Naming:
 
@@ -533,34 +586,36 @@
 * For right now, when using static strings make a note for i18n. These
   do not have to have ownership information.
 * Do not use comments or whitespace as decoration.
-  ```ruby
-  # A background worker for routing unicorns to greener pastures.
-  #
-  # This worker is created when a `PastureChecker` process notices
-  # that a pasture is overcrowded or otherwise unhelathy.  They
-  # can also be created via the console for administrative tasks.
-  #
-  # Notice the first line of this comment was a clear sentence.  The entire
-  # thing reads like two developers talking to one another.  There are
-  # blank lines (still indented and containing the hash mark, but no
-  # trailing space or other characters) between paragraphs.
-  #
-  class UnicornShuffler < BasicWorker
 
-    # Implement the background callback.
+~~~
+    # A background worker for routing unicorns to greener pastures.
     #
-    # This directs a unicorn to fly to a new location if their old location
-    # was unsuitable.  The new location is determined by the Unicorn in
-    # flight, we have simply disallowed this particular location.
-    def self.process unicorn, old_pasture
-      flight = UnicornFlight.create(unicorn)
-      # TODO: i18n
-      flight.disallow_pasture old_pasture, reason: 'Not green enough'
-      # TODO(todd): disallow all pastures in a 3 mile radius.
-      flight.take_off!
+    # This worker is created when a `PastureChecker` process notices
+    # that a pasture is overcrowded or otherwise unhelathy.  They
+    # can also be created via the console for administrative tasks.
+    #
+    # Notice the first line of this comment was a clear sentence.  The entire
+    # thing reads like two developers talking to one another.  There are
+    # blank lines (still indented and containing the hash mark, but no
+    # trailing space or other characters) between paragraphs.
+    #
+    class UnicornShuffler < BasicWorker
+
+      # Implement the background callback.
+      #
+      # This directs a unicorn to fly to a new location if their old location
+      # was unsuitable.  The new location is determined by the Unicorn in
+      # flight, we have simply disallowed this particular location.
+      def self.process unicorn, old_pasture
+        flight = UnicornFlight.create(unicorn)
+        # TODO: i18n
+        flight.disallow_pasture old_pasture, reason: 'Not green enough'
+        # TODO(todd): disallow all pastures in a 3 mile radius.
+        flight.take_off!
+      end
     end
-  end
-  ```
+~~~
+{: .language-ruby}
 
 ### Testing:
 
@@ -605,5 +660,5 @@
 
 ### Related:
 
-http://confreaks.com/videos/77-mwrc2009-the-building-blocks-of-modularity
-http://www.youtube.com/watch?v=npOGOmkxuio
+* http://confreaks.com/videos/77-mwrc2009-the-building-blocks-of-modularity
+* http://www.youtube.com/watch?v=npOGOmkxuio
