@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      CoffeeScript Style Guide - Learning Things
+    </title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+
+  <h1>CoffeeScript Style Guide</h1>
+  <ul>
+<li>Use 2 spaces for indentation, no tabs.</li>
+<li>End each file with a blank line.</li>
+<li>Wrap lines at 80 characters.</li>
+<li>Remove trailing whitespace.</li>
+<li><p>Space after a comma but not before:</p>
+
+<pre>
+# Yes
+api_app.factory "ApiService", ($http) ->
+
+# No
+api_app.factory "ApiService" ,($http) -></pre></li>
+<li><p>Write constants in all caps, <code>LIKE_THIS</code>.</p></li>
+<li>Use <code>if</code>/<code>else</code>, not <code>unless</code>/<code>else</code>.</li>
+<li><p>Use list comprehensions when they fit on a single line:</p>
+
+<pre>
+# Yes
+result = (item.name for item in array)
+
+# No
+results = []
+for item in array
+  results.push item.name</pre></li>
+<li><p>Use comprehensions for filtering when they fit on a single line:</p>
+
+<pre>result = (item for item in array when item.name is "test")</pre></li>
+<li><p>Use <code>@property</code> not <code>this.property</code>.</p></li>
+</ul>
+
+
+<h2>See also:</h2>
+
+<ul>
+<li><a href="https://github.com/polarmobile/coffeescript-style-guide">polarmobile CoffeeScript Style Guide</a></li>
+</ul>
+
+
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
