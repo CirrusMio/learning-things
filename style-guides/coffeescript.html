@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+
+  <title>
+    CoffeeScript Style Guide &middot; 
+    A place for knowing.
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/public/css/hyde.css">
+  <link rel="stylesheet" href="/public/css/syntax.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/public/favicon.png">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+</head>
+
+
+  <body>
+
+    <header class="masthead">
+      <div class="masthead-inner">
+        <h1>CirrusMio Internal Web</h1>
+        <p class="lead"><a href="https://github.com/CirrusMio/internal-web">internal-web</a> is a wiki-like system for distributing knowledge and best practices.</p>
+
+        <div class="colophon">
+          <ul class="colophon-links">
+            
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/about/">About</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/assignments/">Assignments</a>
+                  </li>
+                
+              
+            
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/aws-personal-account/">AWS Personal Account for FUN AND EXPERIMENTATION</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/beginning-a-project/">Beginning a Project</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item active">
+                    <a href="/style-guides/coffeescript/">CoffeeScript Style Guide</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/dashboard/">Dashboard</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/environmental-conditions/">Environmental Conditions</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/git-strategy/">Git Strategy</a>
+                  </li>
+                
+              
+            
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/installing-ruby/">Install Ruby from Scratch</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/interns/">Interns</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/knowledge-bombs/">Knowledge Bombs</a>
+                  </li>
+                
+              
+            
+              
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/moving-to-production/">Moving to Production</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/product-strategy/">Product Strategy</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/style-guides/ruby/">Ruby Style Guide</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/staying-connected/">Staying Connected</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/time-entry/">Time Entry</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/training-program/">Training Program</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/vagrant/">Vagrant</a>
+                  </li>
+                
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/welcome-to-cirrusmio/">Welcome to CirrusMio</a>
+                  </li>
+                
+              
+            
+              
+            
+              
+                
+                  <li class="sidebar-nav-item">
+                    <a href="/knowledge_bombs/20140725_number_one/xtoddx-how_to_readme/">how to README</a>
+                  </li>
+                
+              
+            
+          </ul>
+          <p>&copy; 2014. CirrusMio All rights reserved.
+          Confidential Information</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="content container">
+      <div class="page">
+  <h1 class="page-title">CoffeeScript Style Guide</h1>
+  <ul>
+<li>Use 2 spaces for indentation, no tabs.</li>
+<li>End each file with a blank line.</li>
+<li>Wrap lines at 80 characters.</li>
+<li>Remove trailing whitespace.</li>
+<li><p>Space after a comma but not before:</p>
+
+<p>  ```coffeescript
+  # Yes
+  api_app.factory "ApiService", ($http) -></p>
+
+<p>  # No
+  api_app.factory "ApiService" ,($http) -></p></li>
+<li><p>Write constants in all caps, <code>LIKE_THIS</code>.</p></li>
+<li>Use <code>if</code>/<code>else</code>, not <code>unless</code>/<code>else</code>.</li>
+<li><p>Use list comprehensions when they fit on a single line:</p>
+
+<p>  ```coffeescript
+  # Yes
+  result = (item.name for item in array)</p>
+
+<p>  # No
+  results = []
+  for item in array
+    results.push item.name</p></li>
+<li><p>Use comprehensions for filtering when they fit on a single line:</p>
+
+<p>  ```coffeescript
+  result = (item for item in array when item.name is "test")</p></li>
+<li><p>Use <code>@property</code> not <code>this.property</code>.</p></li>
+</ul>
+
+
+<h2>See also:</h2>
+
+<ul>
+<li><a href="https://github.com/polarmobile/coffeescript-style-guide">polarmobile CoffeeScript Style Guide</a></li>
+</ul>
+
+
+</div>
+
+    </div>
+
+  </body>
+</html>
