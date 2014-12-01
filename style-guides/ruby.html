@@ -1,826 +1,630 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-
+<html>
   <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-
-  <title>
-    Ruby Style Guide &middot; 
-    A place for knowing.
-  </title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="/public/css/hyde.css">
-  <link rel="stylesheet" href="/public/css/syntax.css">
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400italic,400,600,700|Abril+Fatface">
-
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/public/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/public/favicon.png">
-
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
-</head>
-
-
+    <title>
+      Ruby Style Guide - Learning Things
+    </title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+  </head>
   <body>
+    <div class="container">
 
-    <header class="masthead">
-      <div class="masthead-inner">
-        <h1>CirrusMio Internal Web</h1>
-        <p class="lead"><a href="https://github.com/CirrusMio/internal-web">internal-web</a> is a wiki-like system for distributing knowledge and best practices.</p>
-
-        <div class="colophon">
-          <ul class="colophon-links">
-            
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/about/">About</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/assignments/">Assignments</a>
-                  </li>
-                
-              
-            
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/aws-personal-account/">AWS Personal Account for FUN AND EXPERIMENTATION</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/beginning-a-project/">Beginning a Project</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/style-guides/coffeescript/">CoffeeScript Style Guide</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/dashboard/">Dashboard</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/environmental-conditions/">Environmental Conditions</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/git-strategy/">Git Strategy</a>
-                  </li>
-                
-              
-            
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/installing-ruby/">Install Ruby from Scratch</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/interns/">Interns</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/knowledge-bombs/">Knowledge Bombs</a>
-                  </li>
-                
-              
-            
-              
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/moving-to-production/">Moving to Production</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/product-strategy/">Product Strategy</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item active">
-                    <a href="/style-guides/ruby/">Ruby Style Guide</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/staying-connected/">Staying Connected</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/time-entry/">Time Entry</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/training-program/">Training Program</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/vagrant/">Vagrant</a>
-                  </li>
-                
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/welcome-to-cirrusmio/">Welcome to CirrusMio</a>
-                  </li>
-                
-              
-            
-              
-            
-              
-                
-                  <li class="sidebar-nav-item">
-                    <a href="/knowledge_bombs/20140725_number_one/xtoddx-how_to_readme/">how to README</a>
-                  </li>
-                
-              
-            
-          </ul>
-          <p>&copy; 2014. CirrusMio All rights reserved.
-          Confidential Information</p>
-        </div>
-      </div>
-    </header>
-
-    <div class="content container">
-      <div class="page">
-  <h1 class="page-title">Ruby Style Guide</h1>
-  <h2>Theory</h2>
+  <h1>Ruby Style Guide</h1>
+  <h2 id="theory">Theory</h2>
 
 <ul>
-<li>Easy to maintain code should:
-
-<ul>
-<li>look like it was written by a single entity</li>
-<li>follow community best-practices and idioms</li>
-<li>lend itself to testing, metrics gathering, and other scrutiny/verification</li>
-<li>make it easy to find code dealing with a particular concern of the system</li>
-</ul>
-</li>
-<li>We write code for other developers, not the interpreter.</li>
-<li>We have tools to help us manage and create good code.</li>
+  <li>Easy to maintain code should:
+    <ul>
+      <li>look like it was written by a single entity</li>
+      <li>follow community best-practices and idioms</li>
+      <li>lend itself to testing, metrics gathering, and other scrutiny/verification</li>
+      <li>make it easy to find code dealing with a particular concern of the system</li>
+    </ul>
+  </li>
+  <li>We write code for other developers, not the interpreter.</li>
+  <li>We have tools to help us manage and create good code.</li>
 </ul>
 
+<h2 id="practice">Practice</h2>
 
-<h2>Practice</h2>
-
-<h3>See also:</h3>
+<h3 id="see-also">See also:</h3>
 
 <ul>
-<li>https://github.com/dkubb/styleguide/blob/master/RUBY-STYLE</li>
-<li>https://github.com/chneukirchen/styleguide/blob/master/RUBY-STYLE</li>
-<li>https://github.com/styleguide/ruby</li>
+  <li>https://github.com/dkubb/styleguide/blob/master/RUBY-STYLE</li>
+  <li>https://github.com/chneukirchen/styleguide/blob/master/RUBY-STYLE</li>
+  <li>https://github.com/styleguide/ruby</li>
 </ul>
 
-
-<h3>Filesystem Layout:</h3>
+<h3 id="filesystem-layout">Filesystem Layout:</h3>
 
 <ul>
-<li>If it encodes business logic it belongs in <code>app/models</code>, even if it isn't a
+  <li>If it encodes business logic it belongs in <code>app/models</code>, even if it isn't a<br />
 descendent of <code>ActiveRecord::Base</code>.</li>
-<li>If it encodes knowledge of architecture it belongs in <code>lib</code>.</li>
-<li>If it extends or metaprograms existing gem/library code, it belongs in <code>lib</code>
+  <li>If it encodes knowledge of architecture it belongs in <code>lib</code>.</li>
+  <li>If it extends or metaprograms existing gem/library code, it belongs in <code>lib</code><br />
 or in its own gem.</li>
-<li>Every object under test has exactly one file in <code>test/unit</code>.</li>
+  <li>Every object under test has exactly one file in <code>test/unit</code>.</li>
 </ul>
 
-
-<p><em>Examples</em>
-* <code>app/models/ability.rb</code>
-* <code>lib/test/unit/*</code>
+<p><em>Examples</em><br />
+* <code>app/models/ability.rb</code><br />
+* <code>lib/test/unit/*</code><br />
 * <code>test/unit/profile_test.rb</code></p>
 
-<h3>File Composition:</h3>
+<h3 id="file-composition">File Composition:</h3>
 
 <ul>
-<li>Use ASCII (or UTF-8, if you have to) encoding.</li>
-<li>If using UTF-8, place the <code># encoding: utf-8</code> comment at the top of the file
+  <li>Use ASCII (or UTF-8, if you have to) encoding.</li>
+  <li>If using UTF-8, place the <code># encoding: utf-8</code> comment at the top of the file<br />
 (or immediately after the shebang if it is an executable).</li>
-<li>Use 2 space indent, no tabs.</li>
-<li>Use Unix-style line endings.</li>
-<li>Each file should have a newline as its last character.</li>
-<li>Files should be named after the class defined within, when appropriate.</li>
-<li>Files inside of modules should be inside of directories named for those
+  <li>Use 2 space indent, no tabs.</li>
+  <li>Use Unix-style line endings.</li>
+  <li>Each file should have a newline as its last character.</li>
+  <li>Files should be named after the class defined within, when appropriate.</li>
+  <li>Files inside of modules should be inside of directories named for those<br />
 modules.</li>
-<li>Keep lines fewer than 80 characters, count \n as part of that line.</li>
-<li>Avoid trailing whitespace on lines (.git/hooks/pre-commit can help).</li>
+  <li>Keep lines fewer than 80 characters, count \n as part of that line.</li>
+  <li>Avoid trailing whitespace on lines (.git/hooks/pre-commit can help).</li>
 </ul>
 
-
-<h3>File layout:</h3>
+<h3 id="file-layout">File layout:</h3>
 
 <ol>
-<li>Shebang, if executable</li>
-<li>Encoding line, if not ASCII</li>
-<li>requires of stdlib</li>
-<li>requires of gems or framework source</li>
-<li>requires of source from same app</li>
-<li>Usage comment, if a script</li>
-<li>Module and class definitions</li>
-<li>Method definitions</li>
-<li>Wrapped execution in <code>if $0 == __FILE__</code>, if executable</li>
-<li><code>__END__</code> and bundled data, if any</li>
+  <li>Shebang, if executable</li>
+  <li>Encoding line, if not ASCII</li>
+  <li>requires of stdlib</li>
+  <li>requires of gems or framework source</li>
+  <li>requires of source from same app</li>
+  <li>Usage comment, if a script</li>
+  <li>Module and class definitions</li>
+  <li>Method definitions</li>
+  <li>Wrapped execution in <code>if $0 == __FILE__</code>, if executable</li>
+  <li><code>__END__</code> and bundled data, if any</li>
 </ol>
 
-
-<h4>Examples</h4>
+<h4 id="examples">Examples</h4>
 
 <ul>
-<li><p><em>duckhunt</em>, an executable in a gem</p>
+  <li>
+    <p><em>duckhunt</em>, an executable in a gem</p>
 
-<pre><code class="``ruby">  #!/usr/bin/env ruby
-  # encoding: utf-8
+    <pre><code>#!/usr/bin/env ruby
+# encoding: utf-8
 
-  require 'ostruct'
-  require 'gosu'
-  require_relative 'lib/duckhunt/bloodhound'
-  # NOTE: ostruct is STDLIB, gosu is a gem, the other is local to this library
+require 'ostruct'
+require 'gosu'
+require_relative 'lib/duckhunt/bloodhound'
+# NOTE: ostruct is STDLIB, gosu is a gem, the other is local to this library
 
-  if  == __FILE__
-    mechanics = OpenStruct.new(kb: Gosu.has_keyboard?, mouse: Gosu.has_mouse?))
-    game = Duckhunt.new(mechanics)
-    game.main_character = Duckhunt::Bloodhound
-    game.play
-  end
-</code></pre></li>
-<li><p><em>app/models/television.rb</em>, a business model in an app's library
-  ```ruby
-  require 'codec/hdtv'</p>
-
-<p>  # Television is responsible for playing a picture and sound stream.
-  #
-  # A television can get +TelevisionReception+ from many +Channels+ that
-  # provide that stream.
-  #
-  class Television</p>
-
-<pre><code># A codec de-scrambles a stream into a playable representation.
-class &lt;&lt; self
-  attr_accessor :playback_codec
-end
-self.playback_codec = Codec::HDTV
-
-# Create a television
-def initialize start_channel
-  initialize_screen
-  initialize_codec
-  tune_to start_channel
+if  == __FILE__
+  mechanics = OpenStruct.new(kb: Gosu.has_keyboard?, mouse: Gosu.has_mouse?))
+  game = Duckhunt.new(mechanics)
+  game.main_character = Duckhunt::Bloodhound
+  game.play
 end
 </code></pre>
+  </li>
+  <li>
+    <p><em>app/models/television.rb</em>, a business model in an app's library</p>
 
-<p>  end
-  ```</p></li>
+    <pre><code>require 'codec/hdtv'
+
+# Television is responsible for playing a picture and sound stream.
+#
+# A television can get +TelevisionReception+ from many +Channels+ that
+# provide that stream.
+#
+class Television
+  # A codec de-scrambles a stream into a playable representation.
+  class &lt;&lt; self
+    attr_accessor :playback_codec
+  end
+  self.playback_codec = Codec::HDTV
+
+  # Create a television
+  def initialize start_channel
+    initialize_screen
+    initialize_codec
+    tune_to start_channel
+  end
+end
+</code></pre>
+  </li>
 </ul>
 
-
-<h3>Block style:</h3>
+<h3 id="block-style">Block style:</h3>
 
 <ul>
-<li>Use <code>{...}</code> when defining blocks on one line.</li>
-<li>Use <code>do...end</code> for multiline blocks for side-effects, or when DSL
+  <li>Use <code>{...}</code> when defining blocks on one line.</li>
+  <li>Use <code>do...end</code> for multiline blocks for side-effects, or when DSL<br />
 authors prefer it.</li>
-<li><p>Use <code>{...}</code> for multiline blocks where the return value is relevant.
-  ```ruby
-  multiples = numbers.map {|n| n * 5 }</p>
+  <li>
+    <p>Use <code>{...}</code> for multiline blocks where the return value is relevant.</p>
 
-<p>  def select_primes
-    select {|x|
-      factors = factorize_in_constant_time(x)
-      factors.length == 2
-    }
-  end</p>
+    <pre><code>multiples = numbers.map {|n| n * 5 }
 
-<p>  create_task do |task|
-    task.execute = 'kill -9 init'
-  end
-  ```</p></li>
-<li>Blocks are spaced out from their calling function.</li>
-<li><p>Blocks end with a space before <code>}</code> (with exceptions for making it the 79th
-character and avoiding line wrapping).
-  ```ruby
-  # Yes
-  new_image = pixels.map {|px| px * alpha_boost }
-  irc_bot.register_callback('PING') { pong }</p>
-
-<p>  # No
-  new_image=pixels.map { | px |px*alpha_boost}
-  irc_bot.register_callback('PING'){pong}
-  ```</p></li>
-<li><p>Blocks that are called by functions that are doing assignment wrap below the
-start of their capturing/calling method, not under the assigned variable.
-  ```ruby
-  # Yes
-  applicable_results = my_long_named_list_of_things.select {|thing|
-                         ThingSelector.new(thing).is_applicable? }</p>
-
-<p>  # Maybe
-  applicable_results = my_long_named_list_of_things.select {|thing|
-                         ThingSelector.new(thing).is_applicable?
-                       }</p>
-
-<p>  # No
-  applicable_results = my_long_named_list_of_things.select {|thing|
-    ThingSelector.new(thing).is_applicable?  }</p>
-
-<p>  # No
-  applicable_results = my_long_named_list_of_things.select {|thing|
-    ThingSelector.new(thing).is_applicable?
+def select_primes
+  select {|x|
+    factors = factorize_in_constant_time(x)
+    factors.length == 2
   }
-  ```</p></li>
+end
+
+create_task do |task|
+  task.execute = 'kill -9 init'
+end
+</code></pre>
+  </li>
+  <li>Blocks are spaced out from their calling function.</li>
+  <li>
+    <p>Blocks end with a space before <code>}</code> (with exceptions for making it the 79th<br />
+character and avoiding line wrapping).</p>
+
+    <pre><code># Yes
+new_image = pixels.map {|px| px * alpha_boost }
+irc_bot.register_callback('PING') { pong }
+
+# No
+new_image=pixels.map { | px |px*alpha_boost}
+irc_bot.register_callback('PING'){pong}
+</code></pre>
+  </li>
+  <li>
+    <p>Blocks that are called by functions that are doing assignment wrap below the<br />
+start of their capturing/calling method, not under the assigned variable.</p>
+
+    <pre><code># Yes
+applicable_results = my_long_named_list_of_things.select {|thing|
+                       ThingSelector.new(thing).is_applicable? }
+
+# Maybe
+applicable_results = my_long_named_list_of_things.select {|thing|
+                       ThingSelector.new(thing).is_applicable?
+                     }
+
+# No
+applicable_results = my_long_named_list_of_things.select {|thing|
+  ThingSelector.new(thing).is_applicable?  }
+
+# No
+applicable_results = my_long_named_list_of_things.select {|thing|
+  ThingSelector.new(thing).is_applicable?
+}
+</code></pre>
+  </li>
 </ul>
 
-
-<h3>Flow control:</h3>
+<h3 id="flow-control">Flow control:</h3>
 
 <ul>
-<li><p>Avoid <code>for</code> in favor of more ruby-like idioms.
-  ```ruby
-  # Yes
-  presidents.each {|prez| War.new(prez, Country.pick_random) }</p>
+  <li>
+    <p>Avoid <code>for</code> in favor of more ruby-like idioms.</p>
 
-<p>  # No
-  for prez in presidents
-      War.new(prez, Country.pick_random)
+    <pre><code># Yes
+presidents.each {|prez| War.new(prez, Country.pick_random) }
+
+# No
+for prez in presidents
+  War.new(prez, Country.pick_random)
+end
+</code></pre>
+  </li>
+  <li>
+    <p>Never use <code>then</code>, except in <code>case</code> statements where all cases are one line.</p>
+
+    <pre><code># Yes
+case pig.fly_type
+when :none then a_ok
+when :in_a_plane then close_one
+when :with_wings then hell.feeze_over!
+else pig_doctor.check_up_on(pig)
+end
+
+# No
+case bird.dirtiness_with?(source_bird)
+when :only_on_weekends_when_nobody_is_home
+  pull_the_curtains
+when :never then breathe_easy
+end
+</code></pre>
+  </li>
+  <li>Use <code>&amp;&amp;</code>/<code>||</code> for boolean expressions, <code>and</code>/<code>or</code>/<code>not</code> for control flow.</li>
+  <li>
+    <p>Use <code>!</code> for negation.</p>
+
+    <pre><code>def handle_input string
+  # Control flow, so use "and" and "not" instead of "&amp;&amp;" and "!":
+  if (ast=parse) and not something_with_side_effects(ast)
+    compile ast, target: ForthMachine
   end
-  ```</p></li>
-<li><p>Never use <code>then</code>, except in <code>case</code> statements where all cases are one line.
-  ```ruby
-  # Yes
-  case pig.fly_type
-  when :none then a_ok
-  when :in_a_plane then close_one
-  when :with_wings then hell.feeze_over!
-  else pig_doctor.check_up_on(pig)
-  end</p>
+end
 
-<p>  # No
-  case bird.dirtiness_with?(source_bird)
-  when :only_on_weekends_when_nobody_is_home
-    pull_the_curtains
-  when :never then breathe_easy
-  end
-  ```</p></li>
-<li>Use <code>&amp;&amp;</code>/<code>||</code> for boolean expressions, <code>and</code>/<code>or</code> for control flow.</li>
-<li><p>Use <code>not</code> with words, <code>!</code> with symbols
-  ```ruby</p>
+# frozen_over? does not have side effects so not control flow so use "&amp;&amp;":
+if pig.flying? &amp;&amp; !hell.frozen_over?
+  prepare_for_apocolypse
+else
+  carry_on
+end
 
-<p>  def handle_input string
-    if ast=parse and validate(ast)
-      compile ast, target: ForthMachine
-    end
-  end</p>
+self.invisible = !self.visible_to(:robots) &amp;&amp; !self.visible_to(:aliens)
+</code></pre>
+  </li>
+  <li>
+    <p>Avoid multiline <code>?:</code>, use <code>if</code>.</p>
 
-<p>  if pig.flying? and not hell.frozen_over?
-    prepare_for_apocolypse
-  else
-    carry_on
-  end</p>
+    <pre><code># Yes
+if long_object_name.long_method_name
+  long_variable = assignment_from_somewhere_else
+else
+  long_variable = nil
+end
 
-<p>  self.invisible = !self.visible_to(:robots) &amp;&amp; !self.visible_to(:aliens)
-  ```</p></li>
-<li><p>Avoid multiline <code>?:</code>, use <code>if</code>.
-  ```ruby
-  # Yes
-  if long_object_name.long_method_name
-    long_variable = assignment_from_somewhere_else
-  else
-    long_variable = nil
-  end</p>
+# No
+long_varaible = long_object_name.long_method_name ? \
+                    assignment_from_somewhere_else : nil
+</code></pre>
+  </li>
+  <li>
+    <p>Align <code>when</code> and <code>else</code> with <code>case</code>.</p>
 
-<p>  # No
-  long_varaible = long_object_name.long_method_name ? \
-                      assignment_from_somewhere_else : nil
-  ```</p></li>
-<li><p>Align <code>when</code> and <code>else</code> with <code>case</code>.
-  ```ruby
-  # YES
-  case foo
+    <pre><code># Yes
+case foo
+when /bar/
+  raise 'baz'
+else
+  print 'not bar'
+end
+
+# No
+case foo
   when /bar/
     raise 'baz'
   else
-    print 'not bar'
-  end</p>
-
-<p>  # NO
-  case foo
-    when /bar/
-      raise 'baz'
-    else
-      puts 'not bar'
-  end
-  ```</p></li>
-<li>When writing a check in a conditional, the tested value comes first.</li>
-<li>Avoid <code>return</code> when the last line is at the outermost level.</li>
-<li>Use explicit <code>return</code> when in a conditional.</li>
-<li>Use explicit <code>return</code> when short-circuiting or guarding.
-  <code>ruby
-  def robot_companion_type bot_attributes
-    return Chumby if bot_attributes.empty?
-    if bot_attributes.exists_in_future?
-        return T1000
-    end
-    RoboCop
-  end
- </code></li>
-</ul>
-
-
-<h3>Classes:</h3>
-
-<ul>
-<li>Classes have a leading comment like the following:
-  <code>rdoc
-  # ClassName performs this responsibility.
-  #
-  # This is gramaticaly correct english with proper spelling and
-  # punctuation.  The first line was *only* one line.  This paragraph
-  # explains a bit more about what the class does.
-  #
-  # This paragraph talks about how to interface with this class.  All of
-  # these lines are wrapping at 80 characters.
-  #
-  # = High-level Concept
-  #
-  # Knowledge about interoperations, architecutural impact, or specific
-  # uses of this class can be placed under their own heading.
-  #
-  # *Give lots of examples*
-  #
-  #    # The 'peek' operation has an inverse of 'poke'.
-  #    peek_instance = MyClass.new('peek')
-  #    peek_instance.inverse #=&gt; "poke"
-  #
- </code></li>
-<li>There is no empty line between a comment and class definition.</li>
-<li>There should be one empty line between <code>def</code>s in a class or module.</li>
-<li><code>private</code> or <code>public</code> should be isolated by a single blank line before
-and after.</li>
-<li>Use <code>private</code> and <code>public</code> at class scope, not for individual methods.</li>
-<li>Use <code>def self.method</code> to define singleton methods,
-instead of <code>class &lt;&lt; self</code>.</li>
-<li><p>Use RDoc and its conventions for API documentation. Put an empty comment
-line between the body of the comment and the <code>def</code> except for one-line
-documentation.
-  ```ruby</p>
-
-<p>  # Check for the meaning of life.
-  #
-  # Return true if:
-  # * the attempted_answer is greater than 41
-  # * the attempted_answer is less than 43
-  #
-  def check_for_life attempted_answer
-    return attempted_answer == 42
-  end</p>
-
-<p>  # Life is random (and absurd), give users a number to check with.
-  def get_attempt
-    if guess = random(2012)
-      guess += 1
-    end
-    guess
-  end</p>
-
-<p>  private</p>
-
-<p>  def one
-    return 1
-  end</p>
-
-<p>  def two
-    return 2
-  end</p>
-
-<p>  # NO
-  private :check_for_life
-  ```</p></li>
-</ul>
-
-
-<h3>Methods:</h3>
-
-<ul>
-<li>Methods either express the workflow or perform a single task.</li>
-<li>Task-type methods should not call other task-type methods: everything
-terminates at a single, isolated, testable task method.</li>
-<li><p>There can be multiple levels of workflow methods.
-  ```ruby
-  #  A good workflow method
-  def  brew
-    add_hot_water
-    add_tea_bag
-    ding_after(steep_time)
-  end</p>
-
-<p>  # A good task method.
-  #
-  # Until the resivoir reaches the target temperature (F)
-  # continue adding energy (kwh).
-  #
-  def heat_water target=180, energy_increment=0.001
-    while @resivoir.temperature &lt; target
-      @resivoir.add_energy(energy_increment)
-    end
-  end</p>
-
-<p>  # A poor task method (does a task, then calls another task).
-  def add_tea_bag brew='Earl Grey'
-    box = @cubbord.get_tea_box
-    bag = box.select {|tea| tea.name == brew}
-    package = bag.unpackage
-    dispose_of_waste(package)
-    add_bag_to_cup(bag)
-  end</p>
-
-<p>  # Rewritten to be more appropriate as workflow.
-  #
-  # Interacting with other entities (cubbord, wastebasket, cup) is
-  # completely encapsulated here.  The workflow can be tested by adding
-  # mocks to return a double object in the case of +bag+ and the other
-  # methods can be stubbed just to check they're getting the right
-  # argument.
-  #
-  def add_teabag brew='Earl Grey'
-    bag = select_tea_bag
-    unpackage_and_discard_waste(bag)
-    add_bag_to_cup(bag)
-  end
-  ```</p></li>
-<li>Avoid hashes-as-optional-parameters.  For task-type methods this means
-it is probably doing too much, or branching instead of performing a task.
-If you need to modify a workflow function, make a new entry-point for the
-new workflow that encodes all the knowledge instead of having it passed in.</li>
-<li><p>Avoid long parameter lists.  Don't cheat with splats or hashes.
-  ```ruby
-  # No
-  def process processing_object, options={}
-    if options[:setup_method]
-      run_setup_method(options[:setup_method])
-    end
-    initial_state = capture_state
-    processing_object.call
-    final_state = capture_state
-    if options[:teardown_method]
-      run_teardown_method(options[:setup_method])
-    end
-  end</p>
-
-<p>  # Yes
-  class Processor
-    attr_accessor :setup_method
-    attr_accessor :teardown_method</p>
-
-<pre><code>def initialize processing_object
-  @processing_object = processing_object
+    puts 'not bar'
 end
-
-def process
-  setup
-  build_state_comparison do
-    @processing_object.call
-  end
-  teardown
-end
-
-# ...
 </code></pre>
+  </li>
+  <li>When writing a check in a conditional, the tested value comes first.</li>
+  <li>Avoid <code>return</code> when the last line is at the outermost level.</li>
+  <li>Use explicit <code>return</code> when in a conditional.</li>
+  <li>
+    <p>Use explicit <code>return</code> when short-circuiting or guarding.</p>
 
-<p>  end
-  ```</p></li>
-<li>If sections of a method are logically separate by blank lines, then that's
+    <pre><code>def robot_companion_type bot_attributes
+  return Chumby if bot_attributes.empty?
+  if bot_attributes.exists_in_future?
+      return T1000
+  end
+  RoboCop
+end
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="classes">Classes:</h3>
+
+<ul>
+  <li>
+    <p>Classes have a leading comment like the following:</p>
+
+    <pre><code># ClassName performs this responsibility.
+#
+# This is gramaticaly correct english with proper spelling and
+# punctuation.  The first line was *only* one line.  This paragraph
+# explains a bit more about what the class does.
+#
+# This paragraph talks about how to interface with this class.  All of
+# these lines are wrapping at 80 characters.
+#
+# = High-level Concept
+#
+# Knowledge about interoperations, architecutural impact, or specific
+# uses of this class can be placed under their own heading.
+#
+# *Give lots of examples*
+#
+#    # The 'peek' operation has an inverse of 'poke'.
+#    peek_instance = MyClass.new('peek')
+#    peek_instance.inverse #=&gt; "poke"
+#
+</code></pre>
+  </li>
+  <li>There is no empty line between a comment and class definition.</li>
+  <li>There should be one empty line between <code>def</code>s in a class or module.</li>
+  <li><code>private</code> or <code>public</code> should be isolated by a single blank line before<br />
+and after.</li>
+  <li>Use <code>private</code> and <code>public</code> at class scope, not for individual methods.</li>
+  <li>Use <code>def self.method</code> to define singleton methods,<br />
+instead of <code>class &lt;&lt; self</code>.</li>
+  <li>
+    <p>Use RDoc and its conventions for API documentation. Put an empty comment<br />
+line between the body of the comment and the <code>def</code> except for one-line<br />
+documentation.</p>
+
+    <pre><code># Check for the meaning of life.
+#
+# Return true if:
+# * the attempted_answer is greater than 41
+# * the attempted_answer is less than 43
+#
+def check_for_life attempted_answer
+  return attempted_answer == 42
+end
+
+# Life is random (and absurd), give users a number to check with.
+def get_attempt
+  if guess = random(2012)
+    guess += 1
+  end
+  guess
+end
+
+private
+
+def one
+  return 1
+end
+
+def two
+  return 2
+end
+
+# No
+private :check_for_life
+</code></pre>
+  </li>
+</ul>
+
+<h3 id="methods">Methods:</h3>
+
+<ul>
+  <li>Methods either express the workflow or perform a single task.</li>
+  <li>Task-type methods should not call other task-type methods: everything<br />
+terminates at a single, isolated, testable task method.</li>
+  <li>
+    <p>There can be multiple levels of workflow methods.</p>
+
+    <pre><code>#  A good workflow method
+def  brew
+  add_hot_water
+  add_tea_bag
+  ding_after(steep_time)
+end
+
+# A good task method.
+#
+# Until the resivoir reaches the target temperature (F)
+# continue adding energy (kwh).
+#
+def heat_water target=180, energy_increment=0.001
+  while @resivoir.temperature &lt; target
+    @resivoir.add_energy(energy_increment)
+  end
+end
+
+# A poor task method (does a task, then calls another task).
+def add_tea_bag brew='Earl Grey'
+  box = @cubbord.get_tea_box
+  bag = box.select {|tea| tea.name == brew}
+  package = bag.unpackage
+  dispose_of_waste(package)
+  add_bag_to_cup(bag)
+end
+
+# Rewritten to be more appropriate as workflow.
+#
+# Interacting with other entities (cubbord, wastebasket, cup) is
+# completely encapsulated here.  The workflow can be tested by adding
+# mocks to return a double object in the case of +bag+ and the other
+# methods can be stubbed just to check they're getting the right
+# argument.
+#
+def add_teabag brew='Earl Grey'
+  bag = select_tea_bag
+  unpackage_and_discard_waste(bag)
+  add_bag_to_cup(bag)
+end
+</code></pre>
+  </li>
+  <li>Avoid hashes-as-optional-parameters.  For task-type methods this means<br />
+it is probably doing too much, or branching instead of performing a task.<br />
+If you need to modify a workflow function, make a new entry-point for the<br />
+new workflow that encodes all the knowledge instead of having it passed in.</li>
+  <li>
+    <p>Avoid long parameter lists.  Don't cheat with splats or hashes.</p>
+
+    <pre><code># No
+def process processing_object, options={}
+  if options[:setup_method]
+    run_setup_method(options[:setup_method])
+  end
+  initial_state = capture_state
+  processing_object.call
+  final_state = capture_state
+  if options[:teardown_method]
+    run_teardown_method(options[:setup_method])
+  end
+end
+
+# Yes
+class Processor
+  attr_accessor :setup_method
+  attr_accessor :teardown_method
+
+  def initialize processing_object
+    @processing_object = processing_object
+  end
+
+  def process
+    setup
+    build_state_comparison do
+      @processing_object.call
+    end
+    teardown
+  end
+
+  # ...
+end
+</code></pre>
+  </li>
+  <li>If sections of a method are logically separate by blank lines, then that's<br />
 probably a sign that those sections should be split into separate methods.</li>
-<li>Avoid long methods.  Try to keep methods at no more than 10 lines long, and
+  <li>Avoid long methods.  Try to keep methods at no more than 10 lines long, and<br />
 preferably 5 or less.</li>
-<li>Code in a functional way (using small classes and only touching function
+  <li>Code in a functional way (using small classes and only touching function<br />
 parameters instead of global state), avoid mutation when it makes sense.</li>
-<li>Try to have methods either return the state of the object and have no side
-effects, or return self and have side effects. This is otherwise known as
+  <li>Try to have methods either return the state of the object and have no side<br />
+effects, or return self and have side effects. This is otherwise known as<br />
 Command-query separation (CQS):  http://en.wikipedia.org/wiki/Command-query_separation</li>
 </ul>
 
-
-<h3>General code style:</h3>
+<h3 id="general-code-style">General code style:</h3>
 
 <ul>
-<li>Use single spaces around operators (<code>+</code>, <code>-</code>, <code>*</code>, etc).</li>
-<li>No spaces after <code>(</code>, <code>[</code> and before <code>]</code>, <code>)</code>.</li>
-<li>No parenthesis in method definition.</li>
-<li>Use ruby 1.9 hashes where you can.</li>
-<li>Inline conditionals (trailing conditionals) are fine when both the body and the condition fit on the same line.  If it wraps to a new line, break it into a regular <code>if</code>/<code>unless</code>-<code>end</code> block.</li>
-<li><p>Single space between hash key's <code>:</code> and the value.
-  ```ruby
-  # Yes
-  3 + 2
-  thing.perform(param, [first, last])
-  var1 = thing
-  variable_two = other_thing
-  {foo: 'bar'}</p>
+  <li>Use single spaces around operators (<code>+</code>, <code>-</code>, <code>*</code>, etc).</li>
+  <li>No spaces after <code>(</code>, <code>[</code> and before <code>]</code>, <code>)</code>.</li>
+  <li>No parenthesis in method definition.</li>
+  <li>Use ruby 1.9 hashes where you can.</li>
+  <li>Inline conditionals (trailing conditionals) are fine when both the body and the condition fit on the same line.  If it wraps to a new line, break it into a regular <code>if</code>/<code>unless</code>-<code>end</code> block.</li>
+  <li>
+    <p>Single space between hash key's <code>:</code> and the value.</p>
 
-<p>  # No
-  3+2
-  thing.perform( param, [ first, last ] )
-  var1          = thing
-  variable_two  = other_thing
-  {foo:'bar'}
-  {foo => 'bar'}
-  ```</p></li>
-<li><p>Use parentheses when calling methods with arguments unless it is the only
-thing on the line, passed blocks do not count as arguments in this context.
-  ```ruby
-  # Yes
-  maybe_turtle = soup.ingredients(:protein)
-  soup.add_ingredient turtle, :protein
-  soup.prepare_ingredient(:protien) {|meat| meat.season_with(paprika) }
-  soup.prepare_ingredient :protein, &amp;meat_prep</p>
+    <pre><code># Yes
+3 + 2
+thing.perform(param, [first, last])
+var1 = thing
+variable_two = other_thing
+{foo: 'bar'}
 
-<p>  # No
-  mabye_turtle = soup.ingredients :protien
-  soup.add_ingredient(turtle, :protein)
-  soup.prepare_ingredient :protein {|meat| meat.season_with(paprika) }
-  ```</p></li>
-<li>Assignments in the first clause of conditionals are okay.  Do not put spaces around the equals sign in an assignment when it's in a condition.</li>
-<li>Avoid line continuation with backslash where not required.</li>
-<li>When breaking up a long chain over 79 characters, put <code>.</code> on the first line.</li>
-<li>Line up a broken method chain by moving the continuation in line with the
+# No
+3+2
+thing.perform( param, [ first, last ] )
+var1          = thing
+variable_two  = other_thing
+{foo:'bar'}
+{foo =&gt; 'bar'}
+</code></pre>
+  </li>
+  <li>
+    <p>Use parentheses when calling methods with arguments unless it is the only<br />
+thing on the line, passed blocks do not count as arguments in this context.</p>
+
+    <pre><code># Yes
+maybe_turtle = soup.ingredients(:protein)
+soup.add_ingredient turtle, :protein
+soup.prepare_ingredient(:protien) {|meat| meat.season_with(paprika) }
+soup.prepare_ingredient :protein, &amp;meat_prep
+
+# No
+mabye_turtle = soup.ingredients :protien
+soup.add_ingredient(turtle, :protein)
+soup.prepare_ingredient :protein {|meat| meat.season_with(paprika) }
+</code></pre>
+  </li>
+  <li>Assignments in the first clause of conditionals are okay.  Do not put spaces around the equals sign in an assignment when it's in a condition.</li>
+  <li>Avoid line continuation with backslash where not required.</li>
+  <li>When breaking up a long chain over 79 characters, put <code>.</code> on the first line.</li>
+  <li>Line up a broken method chain by moving the continuation in line with the<br />
 first call on the top line.</li>
-<li>Line up a call with lots of arguments by putting arguments indented to the
-level of the first argument on the top line.  Where not possible, indent 4
+  <li>Line up a call with lots of arguments by putting arguments indented to the<br />
+level of the first argument on the top line.  Where not possible, indent 4<br />
 four spaces into the method being called.</li>
-<li><p>Closing <code>)</code>, `}', and ']' should not be on a line by themselves.
-  ```ruby
-  # Yes
-  if score = scoreboard.value(team) and score > 0
-    return "#{team} scored #{score} goals"
-  end</p>
+  <li>
+    <p>Closing <code>)</code>, <code>}</code>, and <code>]</code> should not be on a line by themselves.</p>
 
-<p>  time_limit_reached = scoreboard.game_time &lt;= 0
-  mercy_rule_invoked = scoreboard.score_difference > 10
-  if time_limit_reached or mercy_rule_invoked
-    game_over_man!
-  end</p>
+    <pre><code># Yes
+if score = scoreboard.value(team) and score &gt; 0
+  return "#{team} scored #{score} goals"
+end
 
-<p>  score.method1().method2(team).method3(time_limit_reached).
-        method4().method5()</p>
+time_limit_reached = scoreboard.game_time &lt;= 0
+mercy_rule_invoked = scoreboard.score_difference &gt; 10
+if time_limit_reached or mercy_rule_invoked
+  game_over_man!
+end
 
-<p>  variable_name = call_a_really_long_method_with_some_long_argument_names(
-                      this_is_the_first_argument, 2)</p>
+score.method1().method2(team).method3(time_limit_reached).
+      method4().method5()
 
-<p>  # No
-  if scoreboard.game_time &lt;= 0 and \
-      scoreboard.score_difference > 10
-    game_over_man!
-  end
-  ```</p></li>
-<li>Use <code>||=</code> freely.</li>
-<li>Regexp named captures are preferred.</li>
-<li>Use of non-OO regexps is okay, but you must set <code>$0...$9</code> to named variables
+variable_name = call_a_really_long_method_with_some_long_argument_names(
+                    this_is_the_first_argument, 2)
+
+# No
+if scoreboard.game_time &lt;= 0 and \
+    scoreboard.score_difference &gt; 10
+  game_over_man!
+end
+</code></pre>
+  </li>
+  <li>Use <code>||=</code> freely.</li>
+  <li>Regexp named captures are preferred.</li>
+  <li>Use of non-OO regexps is okay, but you must set <code>$0...$9</code> to named variables<br />
 before using them so their intent is clear.</li>
-<li>Use <code>%r</code> for regexp containing quotes.
-  <code>ruby
-  regexp = %r{[Yy]ou're an? "(?&lt;sarcasm&gt;\w+)" person}
-  regexp =~ "You're an \\"intelligent\\" person"
-  $~[:sarcasm] #=&gt; "intelligent"
- </code></li>
+  <li>
+    <p>Use <code>%r</code> for regexp containing quotes.</p>
+
+    <pre><code>regexp = %r{[Yy]ou're an? "(?&lt;sarcasm&gt;\w+)" person}
+regexp =~ "You're an \\"intelligent\\" person"
+$~[:sarcasm] #=&gt; "intelligent"
+</code></pre>
+  </li>
 </ul>
 
-
-<h3>Naming:</h3>
+<h3 id="naming">Naming:</h3>
 
 <ul>
-<li>Use snake_case for methods.</li>
-<li>Use CamelCase for classes and modules.
+  <li>Use snake_case for methods.</li>
+  <li>Use CamelCase for classes and modules.<br />
 (Keep acronyms like HTTP, RFC, XML uppercase.)</li>
-<li>Use SCREAMING_SNAKE_CASE for other constants.</li>
-<li>Single letter variable names are only okay in short blocks when assignment
-is done at the top of the block, or in calling a function that <code>yield</code>s to
+  <li>Use SCREAMING_SNAKE_CASE for other constants.</li>
+  <li>Single letter variable names are only okay in short blocks when assignment<br />
+is done at the top of the block, or in calling a function that <code>yield</code>s to<br />
 the block (like <code>inject</code>).</li>
-<li>Variable names should be communicative and unambiguous.</li>
-<li>Use consistent variable names. Try to keep the variable names close to the
+  <li>Variable names should be communicative and unambiguous.</li>
+  <li>Use consistent variable names. Try to keep the variable names close to the<br />
 object class name.</li>
-<li>Use names prefixed with <code>_</code> for unused variables, for example when you
+  <li>Use names prefixed with <code>_</code> for unused variables, for example when you<br />
 implement a callback to an API that gives you more than you care about.</li>
-<li>Do not pass bare objects (strings, <code>true</code>/<code>false</code>/<code>nil</code>) into functions if
-their use is not clear.  Instead make a variable
-(called <code>skip_processing = true</code>, for example) and pass the named variable
+  <li>Do not pass bare objects (strings, <code>true</code>/<code>false</code>/<code>nil</code>) into functions if<br />
+their use is not clear.  Instead make a variable<br />
+(called <code>skip_processing = true</code>, for example) and pass the named variable<br />
 in instead.</li>
-<li>When defining binary operators, name the argument "<code>other</code>".</li>
-<li>Prefer <code>map</code> over <code>collect</code>, <code>detect</code> over <code>find</code>, <code>select</code> over <code>find_all</code>.</li>
+  <li>When defining binary operators, name the argument “<code>other</code>”.</li>
+  <li>Prefer <code>map</code> over <code>collect</code>, <code>detect</code> over <code>find</code>, <code>select</code> over <code>find_all</code>.</li>
 </ul>
 
-
-<h3>Comments:</h3>
+<h3 id="comments">Comments:</h3>
 
 <ul>
-<li>Encourage discoverablility and introspection over explicit declaration.  The
+  <li>Encourage discoverablility and introspection over explicit declaration.  The<br />
 system in use should be more valuable to observe than the comments about it.</li>
-<li>Comments longer than a word are capitalized and use punctuation.</li>
-<li>Comments of a single word should probably be longer.</li>
-<li>Avoid superfluous comments.</li>
-<li>Document all consumable APIs at the module/class and method level.  In rails
+  <li>Comments longer than a word are capitalized and use punctuation.</li>
+  <li>Comments of a single word should probably be longer.</li>
+  <li>Avoid superfluous comments.</li>
+  <li>Document all consumable APIs at the module/class and method level.  In rails<br />
 this includes everything in lib and app/models.</li>
-<li>Comments are a single short (must not line wrap at 80 characters)
+  <li>Comments are a single short (must not line wrap at 80 characters)<br />
 sentence for overview, followed by a newline, followed by exposition.</li>
-<li>When creating a TODO, include ownership information.</li>
-<li>For right now, when using static strings make a note for i18n. These
+  <li>When creating a TODO, include ownership information.</li>
+  <li>For right now, when using static strings make a note for i18n. These<br />
 do not have to have ownership information.</li>
-<li>Do not use comments or whitespace as decoration.
-```ruby
+  <li>
+    <p>Do not use comments or whitespace as decoration.</p>
 
-<h1>A background worker for routing unicorns to greener pastures.</h1>
-
+    <pre><code># A background worker for routing unicorns to greener pastures.
 #
-
-<h1>This worker is created when a <code>PastureChecker</code> process notices</h1>
-
-<h1>that a pasture is overcrowded or otherwise unhelathy.  They</h1>
-
-<h1>can also be created via the console for administrative tasks.</h1>
-
+# This worker is created when a `PastureChecker` process notices
+# that a pasture is overcrowded or otherwise unhelathy.  They
+# can also be created via the console for administrative tasks.
 #
+# Notice the first line of this comment was a clear sentence.  The entire
+# thing reads like two developers talking to one another.  There are
+# blank lines (still indented and containing the hash mark, but no
+# trailing space or other characters) between paragraphs.
+#
+class UnicornShuffler &lt; BasicWorker
 
-<h1>Notice the first line of this comment was a clear sentence.  The entire</h1>
-
-<h1>thing reads like two developers talking to one another.  There are</h1>
-
-<h1>blank lines (still indented and containing the hash mark, but no</h1>
-
-<h1>trailing space or other characters) between paragraphs.</h1>
-
-<p>#
-class UnicornShuffler &lt; BasicWorker</p>
-
-<p>  # Implement the background callback.
+  # Implement the background callback.
   #
   # This directs a unicorn to fly to a new location if their old location
   # was unsuitable.  The new location is determined by the Unicorn in
@@ -833,70 +637,66 @@ class UnicornShuffler &lt; BasicWorker</p>
     flight.take_off!
   end
 end
-```</p></li>
+</code></pre>
+  </li>
 </ul>
 
-
-<h3>Testing:</h3>
+<h3 id="testing">Testing:</h3>
 
 <ul>
-<li>When writing an assertion for testing, the known value comes first.</li>
-<li>Integration tests should not look at the databse, they should observe the
+  <li>When writing an assertion for testing, the known value comes first.</li>
+  <li>Integration tests should not look at the databse, they should observe the<br />
 changes visible from the front-end.</li>
 </ul>
 
-
-<h3>Optimization:</h3>
+<h3 id="optimization">Optimization:</h3>
 
 <ul>
-<li>Do not optimize for performance.</li>
-<li>Do not make use of advanced features of our infrastructure or backend
+  <li>Do not optimize for performance.</li>
+  <li>Do not make use of advanced features of our infrastructure or backend<br />
 servies.</li>
-<li>When optimization becomes necessary: measure, implement a fix for a single
+  <li>When optimization becomes necessary: measure, implement a fix for a single<br />
 code path, measure in testing, release, measure.</li>
 </ul>
 
-
-<h3>Misc Engineering:</h3>
+<h3 id="misc-engineering">Misc Engineering:</h3>
 
 <ul>
-<li>Avoid needless metaprogramming.  Avoid dependencies that encourage it.</li>
-<li>Avoid forking dependencies.  Write wrappers or metaprogramming patches for
+  <li>Avoid needless metaprogramming.  Avoid dependencies that encourage it.</li>
+  <li>Avoid forking dependencies.  Write wrappers or metaprogramming patches for<br />
 gems that don't work as expected.  Otherwise avoid the gem.</li>
-<li>Do not mutate arguments unless that is the purpose of the method.</li>
-<li>Do not mess around in core classes when writing libraries.</li>
-<li>Do not program defensively. (See <a href="http://www.erlang.se/doc/programming_rules.shtml#HDR11">Erlang Style Guide</a>
-)</li>
-<li>Fail fast and loud.</li>
+  <li>Do not mutate arguments unless that is the purpose of the method.</li>
+  <li>Do not mess around in core classes when writing libraries.</li>
+  <li>Do not program defensively. See <a href="http://www.erlang.se/doc/programming_rules.shtml#HDR11">Erlang Style Guide</a>.</li>
+  <li>Fail fast and loud.</li>
 </ul>
 
-
-<h3>General:</h3>
+<h3 id="general">General:</h3>
 
 <ul>
-<li>Add "global" methods to <code>Kernel</code> (if you have to) and make them private.</li>
-<li>Avoid <code>alias</code> when <code>alias_method</code> will do.</li>
-<li>Always <code>freeze</code> objects assigned to constants.</li>
-<li>Write for 1.9.</li>
-<li>Don't favor MRI over JRuby.</li>
-<li>Keep the code simple.</li>
-<li>Don't overdesign.</li>
-<li>Don't underdesign.</li>
-<li>Avoid bugs.</li>
-<li>Read other style guides and apply the parts that don't dissent with this
+  <li>Add “global” methods to <code>Kernel</code> (if you have to) and make them private.</li>
+  <li>Avoid <code>alias</code> when <code>alias_method</code> will do.</li>
+  <li>Always <code>freeze</code> objects assigned to constants.</li>
+  <li>Write for 1.9.</li>
+  <li>Don't favor MRI over JRuby.</li>
+  <li>Keep the code simple.</li>
+  <li>Don't overdesign.</li>
+  <li>Don't underdesign.</li>
+  <li>Avoid bugs.</li>
+  <li>Read other style guides and apply the parts that don't dissent with this<br />
 list.  Recommended: PEP-8, PEP-257.</li>
-<li>Be consistent with your team and community idioms.</li>
-<li>Use common sense.</li>
+  <li>Be consistent with your team and community idioms.</li>
+  <li>Use common sense.</li>
 </ul>
 
+<h3 id="related">Related:</h3>
 
-<h3>Related:</h3>
-
-<p>http://confreaks.com/videos/77-mwrc2009-the-building-blocks-of-modularity</p>
-
-</div>
+<ul>
+  <li><a href="http://confreaks.com/videos/77-mwrc2009-the-building-blocks-of-modularity">The Building Blocks of Modularity by Jim Weirich</a></li>
+</ul>
 
     </div>
-
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
