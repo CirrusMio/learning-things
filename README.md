@@ -3,4 +3,4 @@ CirrusMio. We're sharing it publicly becuase we think the internet may like it.
 
 [Visit the site][site]
 
-[site]: http://cirrusmio.github.io/learning-things
+[site]: http://learning-things.cirrusmio.com/
