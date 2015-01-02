@@ -34,12 +34,13 @@ resources or reviews for any of the materials.
 
 ## Foundations
 
+* [Techniques for Learning][techniques]
 * [Beginning Ruby][ruby]
 * [Beginning HTML 5][html]
 * [Beginning JavaScript][js]
 * [Beginning Linux]
 * [Beginning Amazon Web Services]
-* [Beginning Git]
+* [Beginning Git][git]
 
 ## Intermediate Levels and Frameworks
 
@@ -60,9 +61,11 @@ resources or reviews for any of the materials.
 
 * [Style Standards][style]
 
+[techniques]: learning-techniques.html
 [gh]: http://github.com/CirrusMio/learning-things
 [ruby]: beginning-ruby.html
 [html]: beginning-html5.html
 [js]: beginning-javascript.html
+[git]: beginning-git.html
 
 [style]: styleguide.html
