@@ -21,7 +21,7 @@
 ### Filesystem Layout:
 
 * If it encodes business logic it belongs in `app/models`, even if it isn't a
-  descendent of `ActiveRecord::Base`.
+  descendant of `ActiveRecord::Base`.
 * If it encodes knowledge of architecture it belongs in `lib`.
 * If it extends or metaprograms existing gem/library code, it belongs in `lib`
   or in its own gem.
@@ -194,7 +194,7 @@
     case pig.fly_type
     when :none then a_ok
     when :in_a_plane then close_one
-    when :with_wings then hell.feeze_over!
+    when :with_wings then hell.freeze_over!
     else pig_doctor.check_up_on(pig)
     end
 
@@ -218,7 +218,7 @@
     end
 
     if pig.flying? and not hell.frozen_over?
-      prepare_for_apocolypse
+      prepare_for_apocalypse
     else
       carry_on
     end
@@ -238,7 +238,7 @@
     end
 
     # No
-    long_varaible = long_object_name.long_method_name ? \
+    long_variable = long_object_name.long_method_name ? \
                         assignment_from_somewhere_else : nil
 ~~~
 {: .language-ruby}
@@ -288,7 +288,7 @@
 ~~~
     # ClassName performs this responsibility.
     #
-    # This is gramaticaly correct english with proper spelling and
+    # This is grammatically correct english with proper spelling and
     # punctuation.  The first line was *only* one line.  This paragraph
     # explains a bit more about what the class does.
     #
@@ -297,7 +297,7 @@
     #
     # = High-level Concept
     #
-    # Knowledge about interoperations, architecutural impact, or specific
+    # Knowledge about interoperations, architectural impact, or specific
     # uses of this class can be placed under their own heading.
     #
     # *Give lots of examples*
@@ -371,12 +371,12 @@
 
     # A good task method.
     #
-    # Until the resivoir reaches the target temperature (F)
+    # Until the reservoir reaches the target temperature (F)
     # continue adding energy (kwh).
     #
     def heat_water target=180, energy_increment=0.001
-      while @resivoir.temperature < target
-        @resivoir.add_energy(energy_increment)
+      while @reservoir.temperature < target
+        @reservoir.add_energy(energy_increment)
       end
     end
 
@@ -391,7 +391,7 @@
 
     # Rewritten to be more appropriate as workflow.
     #
-    # Interacting with other entities (cubbord, wastebasket, cup) is
+    # Interacting with other entities (cupboard, wastebasket, cup) is
     # completely encapsulated here.  The workflow can be tested by adding
     # mocks to return a double object in the case of +bag+ and the other
     # methods can be stubbed just to check they're getting the right
@@ -491,11 +491,11 @@
     # Yes
     maybe_turtle = soup.ingredients(:protein)
     soup.add_ingredient turtle, :protein
-    soup.prepare_ingredient(:protien) {|meat| meat.season_with(paprika) }
+    soup.prepare_ingredient(:protein) {|meat| meat.season_with(paprika) }
     soup.prepare_ingredient :protein, &meat_prep
 
     # No
-    mabye_turtle = soup.ingredients :protien
+    maybe_turtle = soup.ingredients :protein
     soup.add_ingredient(turtle, :protein)
     soup.prepare_ingredient :protein {|meat| meat.season_with(paprika) }
 ~~~
@@ -591,7 +591,7 @@
     # A background worker for routing unicorns to greener pastures.
     #
     # This worker is created when a `PastureChecker` process notices
-    # that a pasture is overcrowded or otherwise unhelathy.  They
+    # that a pasture is overcrowded or otherwise unhealthy.  They
     # can also be created via the console for administrative tasks.
     #
     # Notice the first line of this comment was a clear sentence.  The entire
@@ -620,14 +620,14 @@
 ### Testing:
 
 * When writing an assertion for testing, the known value comes first.
-* Integration tests should not look at the databse, they should observe the
+* Integration tests should not look at the database, they should observe the
   changes visible from the front-end.
 
 ### Optimization:
 
 * Do not optimize for performance.
 * Do not make use of advanced features of our infrastructure or backend
-  servies.
+  services.
 * When optimization becomes necessary: measure, implement a fix for a single
   code path, measure in testing, release, measure.
 

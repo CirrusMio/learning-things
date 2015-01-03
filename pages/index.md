@@ -23,7 +23,7 @@ Use the following pages to maintain a list of resources and provide comments and
 feedback on them. Each page should list the key takeaways of following the
 tutorials, and how we would judge that a student has learned the required
 techniques to be qualified at a particular level (beginner, intermediate,
-advanced). There is no pathway for the expert level, becuase it is simply
+advanced). There is no pathway for the expert level, because it is simply
 experience and interaction that provide the last mile. There will never be a
 course that can compensate for lack of experience.
 
