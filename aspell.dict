@@ -1,4 +1,4 @@
-personal_ws-1.1 en 67 
+personal_ws-1.1 en 73 
 ActiveRecord
 UnicornFlight
 attr
@@ -14,9 +14,11 @@ GitHub
 prez
 UTF
 CirrusMio
+awk
 usr
 init
 ForthMachine
+ACMR
 underdesign
 Erlang
 RoboCop
@@ -38,9 +40,11 @@ baz
 CQS
 workflow
 discoverablility
+spellcheck
 backend
 blockquote
 minitest
+xtoddx
 CSS
 OpenStruct
 csv
@@ -50,6 +54,7 @@ CoffeeScript
 Chumby
 Haml
 zenkoans
+pre
 duckhunt
 overdesign
 DSL
@@ -66,3 +71,4 @@ ClassName
 irc
 unpackage
 BasicWorker
+Spellchecking
