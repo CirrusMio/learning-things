@@ -23,7 +23,7 @@ These are the skills that should be able to be demonstrated at beginner level:
 #### GitHub Guides
 
 [GitHub Guides][gh-guides] is a YouTube chanel that introduces you to the
-featues of git and GitHub.
+features of git and GitHub.
 
 #### Try GitHub
 
