@@ -58,7 +58,7 @@ you learning.
 
 ### Big list of resources
 
-The [Free Programming Books][fpb] project has collected a set of resources that
+The [Free Programming Books][book] project has collected a set of resources that
 may be helpful. If you find them valuable, please list them on this page with
 your review.
 
@@ -73,4 +73,4 @@ your review.
 [weekly]: http://rubyweekly.com/
 [koans]: http://rubykoans.com
 [zenkoans]: http://en.wikipedia.org/wiki/Koan
-[fpb]: https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md#ruby
+[book]: https://github.com/vhf/free-programming-books/blob/master/free-programming-books.md#ruby
