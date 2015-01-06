@@ -19,14 +19,11 @@
 </h2>
 
 <ul>
-  <li>Use <code>describe</code> blocks to wrap a set of tests against one functionality</li>
-  <li>Use <code>context</code> blocks to wrap a set of tests against one functionality <em>in the same state</em></li>
-  <li>Prefer multiple <code>it</code> blocks, each with one <code>expect</code></li>
-</ul>
-
-<p><strong>Example:</strong></p>
-<pre>
-describe 'my_cool_method' do
+  <li>Use <code>describe</code> blocks to wrap a set of tests against one functionality, such as tests for a single method.</li>
+  <li>Use <code>context</code> blocks to wrap a set of tests against one functionality <em>in the same state</em>.</li>
+  <li>
+    Prefer multiple <code>it</code> blocks, each with one <code>expect</code>:
+    <pre>describe '#my_cool_method' do
   context 'when foo is bar' do
     before { subject.foo = 'bar' }
 
@@ -50,8 +47,138 @@ describe 'my_cool_method' do
       expect { subject.my_cool_method }.to_not change(Thing, :count)
     end
   end
+end</pre>
+  </li>
+  <li>If you find yourself naming a test "... if <em>some condition</em>" or "when <em>some condition</em>, ...", that's a hint you should use a <code>context</code> block.</li>
+  <li>
+    Use factories instead of fixtures. Create only the data you need for testing the condition.
+  </li>
+  <li>
+    Name tests in third-person present tense. Do not use "should":
+    <pre># BAD
+it 'should eat the bear' do</pre>
+    <pre># GOOD
+it 'eats the bear' do</pre>
+  </li>
+</ul>
+
+<h2 id="features">
+  <a href="#features">
+    <small><i class="glyphicon glyphicon-link"></i></small>
+  </a>
+  Make Use of RSpec Features
+</h2>
+
+<ul>
+  <li>
+    If multiple tests are checking a property of the same thing, <acronym title="Don't Repeat Yourself">DRY</acronym> them up with <code>subject</code>:
+    <pre># BAD
+it 'includes location' do
+  expect(assigns('message')).to match(/it was born in Belville/)
 end
-</pre>
+
+it 'sets creator' do
+  expect(assigns('message').creator).to match(/Topolino/)
+end</pre>
+
+<pre># GOOD
+describe '@message' do
+  subject { assigns('message') }
+
+  it 'includes location' do
+    expect(subject).to match(/it was born in Belville/)
+  end
+
+  it 'sets creator' do
+    expect(subject.creator).to match(/Topolino/)
+  end
+end</pre>
+  </li>
+  <li>
+    Use <code>let(:variable)</code>/<code>let!(:variable)</code> instead of <code>before { @variable = ... }</code>.
+    <ul>
+      <li>Use <code>let</code> when you only need the variable initialized when it is first referenced.</li>
+      <li>Use <code>let!</code> when you need the variable initialized when the containing block is initialized. Example: to create records before testing an #index Rails action that lists records.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="coverage">
+  <a href="#coverage">
+    <small><i class="glyphicon glyphicon-link"></i></small>
+  </a>
+  Test Coverage
+</h2>
+
+<ul>
+  <li>
+    Test both negative and positive outcomes, e.g., don't just test that the action responds with 200 OK when given perfect input.
+    <ul>
+      <li>What happens when the resource is not found?</li>
+      <li>What happens when the record fails to save?</li>
+      <li>What happens if the user does not have permission?</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="style">
+  <a href="#style">
+    <small><i class="glyphicon glyphicon-link"></i></small>
+  </a>
+  Style
+</h2>
+
+<ul>
+  <li>Single blank line between <code>it</code>, <code>describe</code>, and <code>context</code> blocks.</li>
+  <li>Put <code>let</code>, <code>before</code>, and <code>after</code> blocks before <code>it</code> blocks.</li>
+  <li>No blank lines between <code>let</code>, <code>before</code>, <code>after</code>, and <code>subject</code> blocks.</li>
+  <li>
+    Single blank line between <code>let</code>/<code>before</code>/<code>after</code>/<code>subject</code> and <code>it</code> blocks:
+    <pre># BAD
+before { Foo.bar = true }
+
+after { Foo.bar = false }
+it 'does something' do
+  ...
+end
+it 'does something else' do
+  ...
+end
+let(:var) { create(:var) }
+
+subject { var.fiddly_bits }</pre>
+
+    <pre># GOOD
+before { Foo.bar = true }
+let(:var) { create(:var) }
+after { Foo.bar = false }
+subject { var.fiddly_bits }
+
+it 'does something' do
+  ...
+end
+
+it 'does something else' do
+  ...
+end</pre>
+  </li>
+  <li>Use single-line blocks with <code>{</code> <code>}</code> when the <code>let</code>/<code>before</code>/<code>after</code>/<code>subject</code> definition will fit within 80 characters. Otherwise, use multi-line blocks with <code>do</code> <code>end</code>.</li>
+  <li>
+    If the <code>it</code> block has a description or goes over 80 characters, use <code>do</code> <code>end</code> on multiple lines. Otherwise, use <code>{</code> <code>}</code>:
+    <pre># BAD
+it 'returns true' { expect(subject.foo).to eq(true) }
+
+it do
+  is_expected.to respond_with(200)
+end</pre>
+    <pre># GOOD
+it 'returns true' do
+  expect(subject.foo).to eq(true)
+end
+
+it { is_expected.to respond_with(200) }</pre>
+  </li>
+</ul>
 
 <h2 id="related">
   <a href="#related">
@@ -59,6 +186,7 @@ end
   </a>
   Related:
 </h2>
+
 <ul>
   <li><a href="http://betterspecs.org/">Better Specs</a></li>
 </ul>
