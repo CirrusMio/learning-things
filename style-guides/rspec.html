@@ -11,7 +11,7 @@
 
 <h1>RSpec Style Guide</h1>
 
-<h2 id="organization">
+<h2><a name="organization"></a>
   <a href="#organization">
     <small><i class="glyphicon glyphicon-link"></i></small>
   </a>
@@ -62,7 +62,7 @@ it 'eats the bear' do</pre>
   </li>
 </ul>
 
-<h2 id="features">
+<h2><a name="features"></a>
   <a href="#features">
     <small><i class="glyphicon glyphicon-link"></i></small>
   </a>
@@ -103,7 +103,7 @@ end</pre>
   </li>
 </ul>
 
-<h2 id="coverage">
+<h2><a name="coverage"></a>
   <a href="#coverage">
     <small><i class="glyphicon glyphicon-link"></i></small>
   </a>
@@ -121,7 +121,7 @@ end</pre>
   </li>
 </ul>
 
-<h2 id="style">
+<h2><a name="style"></a>
   <a href="#style">
     <small><i class="glyphicon glyphicon-link"></i></small>
   </a>
@@ -178,9 +178,18 @@ end
 
 it { is_expected.to respond_with(200) }</pre>
   </li>
+  <li>
+    Use parentheses around parameters to nested method calls. The outer-most method's parentheses should be omitted:
+    <pre># BAD
+it { is_expected.to respond_with 200 }
+it { is_expected.to(respond_with 200) }
+it { is_expected.to(respond_with(200)) }</pre>
+    <pre># GOOD
+it { is_expected.to respond_with(200) }</pre>
+  </li>
 </ul>
 
-<h2 id="related">
+<h2><a name="related"></a>
   <a href="#related">
     <small><i class="glyphicon glyphicon-link"></i></small>
   </a>
