@@ -11,6 +11,58 @@
 
 <h1>RSpec Style Guide</h1>
 
+<h2 id="organization">
+  <a href="#organization">
+    <small><i class="glyphicon glyphicon-link"></i></small>
+  </a>
+  Test Organization
+</h2>
+
+<ul>
+  <li>Use <code>describe</code> blocks to wrap a set of tests against one functionality</li>
+  <li>Use <code>context</code> blocks to wrap a set of tests against one functionality <em>in the same state</em></li>
+  <li>Prefer multiple <code>it</code> blocks, each with one <code>expect</code></li>
+</ul>
+
+<p><strong>Example:</strong></p>
+<pre>
+describe 'my_cool_method' do
+  context 'when foo is bar' do
+    before { subject.foo = 'bar' }
+
+    it 'returns true' do
+      expect(subject.my_cool_method).to eq(true)
+    end
+
+    it 'increases count of thing' do
+      expect { subject.my_cool_method }.to change(Thing, :count).by(1)
+    end
+  end
+
+  context 'when foo is not bar' do
+    before { subject.foo = 'other value' }
+
+    it 'returns false' do
+      expect(subject.my_cool_method).to eq(false)
+    end
+
+    it 'does not change count of thing' do
+      expect { subject.my_cool_method }.to_not change(Thing, :count)
+    end
+  end
+end
+</pre>
+
+<h2 id="related">
+  <a href="#related">
+    <small><i class="glyphicon glyphicon-link"></i></small>
+  </a>
+  Related:
+</h2>
+<ul>
+  <li><a href="http://betterspecs.org/">Better Specs</a></li>
+</ul>
+
     </div>
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
