@@ -101,6 +101,9 @@ end</pre>
       <li>Use <code>let!</code> when you need the variable initialized when the containing block is initialized. Example: to create records before testing an #index Rails action that lists records.</li>
     </ul>
   </li>
+  <li>
+    Use <a href="https://www.relishapp.com/rspec/rspec-core/docs/example-groups/shared-examples">shared examples</a> to DRY up duplicate tests for the same behavior from different things, e.g., model and controller ActiveSupport::Concerns used in multiple classes.
+  </li>
 </ul>
 
 <h2><a name="coverage"></a>
