@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 ## Highlights
 
 The main takeaways from JavaScript are:

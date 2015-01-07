@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Beginning Ruby
 
 ## Highlights

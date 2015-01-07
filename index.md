@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Learning, The CirrusMio Way
 
 Put simply, the CirrusMio Way is continuous improvement.
@@ -15,8 +19,8 @@ progress toward expertise.
 Your success is likely if you maintain:
 
 * passion
-* communication
-* determination
+* *communication
+* *determination
 * curiosity
 
 Use the following pages to maintain a list of resources and provide comments and
@@ -25,44 +29,34 @@ tutorials, and how we would judge that a student has learned the required
 techniques to be qualified at a particular level (beginner, intermediate,
 advanced). There is no pathway for the expert level, becuase it is simply
 experience and interaction that provide the last mile. There will never be a
-course that can compensate for lack of experience.
+course that can compensate for lack of experience.</p>
 
 #### A note on providing updates
 
 This project is on [GitHub][gh]. Please fork and send a pull request to add
 resources or reviews for any of the materials.
 
+## Style Guides
+
+* [Ruby][ruby]
+* [Rspec][rspec]
+* [CoffeeScript][coffeescript]
+
 ## Foundations
 
-* [Beginning Ruby][ruby]
-* [Beginning HTML 5][html]
-* [Beginning JavaScript][js]
-* [Beginning Linux]
-* [Beginning Amazon Web Services]
-* [Beginning Git]
-
-## Intermediate Levels and Frameworks
-
-* [[Learning Rails Controllers]]
-* [[Learning Rails Models]]
-* [[Learning CoffeeScript]]
-* [[Learning Haml]]
-* [[Learning JSON]]
-* [[Learning AngularJS]]
-
-## Advanced Levels
-
-* [[Mastering Ruby]]
-* [[Mastering JavaScript]]
-* [[Mastering Git]]
+* [Beginning Ruby][beginning-ruby]
+* [Beginning HTML 5][beginning-html]
+* [Beginning JavaScript][beginning-js]
 
 ## Internal Processes and Procedures
 
 * [Style Standards][style]
 
 [gh]: http://github.com/CirrusMio/learning-things
-[ruby]: beginning-ruby.html
-[html]: beginning-html5.html
-[js]: beginning-javascript.html
+[beginning-ruby]: beginning-ruby.html
+[beginning-html]: beginning-html5.html
+[beginning-js]: beginning-javascript.html
 
-[style]: styleguide.html
+[ruby]: style-guides/ruby.html
+[rspec]: style-guides/rspec.html
+[coffeescript]: style-guides/coffeescript.html
