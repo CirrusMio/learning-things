@@ -48,10 +48,6 @@ resources or reviews for any of the materials.
 * [Beginning HTML 5][beginning-html]
 * [Beginning JavaScript][beginning-js]
 
-## Internal Processes and Procedures
-
-* [Style Standards][style]
-
 [gh]: http://github.com/CirrusMio/learning-things
 [beginning-ruby]: beginning-ruby.html
 [beginning-html]: beginning-html5.html
