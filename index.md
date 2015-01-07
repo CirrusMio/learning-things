@@ -19,8 +19,8 @@ progress toward expertise.
 Your success is likely if you maintain:
 
 * passion
-* *communication
-* *determination
+* communication
+* determination
 * curiosity
 
 Use the following pages to maintain a list of resources and provide comments and
