@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # CirrusMio Style Guide
 
 ## Theory
