@@ -453,7 +453,7 @@ layout: default
 
 * If sections of a method are logically separate by blank lines, then that's
   probably a sign that those sections should be split into separate methods.
-* Avoid long methods.  Try to keep methods at no more than 10 lines long, and 
+* Avoid long methods.  Try to keep methods at no more than 10 lines long, and
   preferably 5 or less.
 * Code in a functional way (using small classes and only touching function
   parameters instead of global state), avoid mutation when it makes sense.
@@ -466,28 +466,7 @@ layout: default
 * Use single spaces around operators (`+`, `-`, `*`, etc).
 * No spaces after `(`, `[` and before `]`, `)`.
 * No parenthesis in method definition.
-* Use ruby 1.9 hashes where you can.
 * Inline conditionals (trailing conditionals) are fine when both the body and the condition fit on the same line.  If it wraps to a new line, break it into a regular `if`/`unless`-`end` block.
-* Single space between hash key's `:` and the value.
-
-~~~
-    # Yes
-    3 + 2
-    thing.perform(param, [first, last])
-    var1 = thing
-    variable_two = other_thing
-    {foo: 'bar'}
-
-    # No
-    3+2
-    thing.perform( param, [ first, last ] )
-    var1          = thing
-    variable_two  = other_thing
-    {foo:'bar'}
-    {foo => 'bar'}
-~~~
-{: .language-ruby}
-
 * Use parentheses when calling methods with arguments unless it is the only
   thing on the line, passed blocks do not count as arguments in this context.
 
@@ -574,6 +553,41 @@ layout: default
   in instead.
 * When defining binary operators, name the argument "`other`".
 * Prefer `map` over `collect`, `detect` over `find`, `select` over `find_all`.
+
+### Hashes:
+
+* Use ruby 1.9 hashes where you can.
+* When passing a hash as the final parameter to a method, omit the curly braces.
+~~~
+    # Yes
+    set :ssh_options, forward_agent: true
+
+    # No
+    set :ssh_options, {forward_agent: true}
+~~~
+{: .language-ruby}
+
+* Single space between hash key's `:` and the value.
+
+~~~
+    # Yes
+    3 + 2
+    thing.perform(param, [first, last])
+    var1 = thing
+    variable_two = other_thing
+    {foo: 'bar'}
+
+    # No
+    3+2
+    thing.perform( param, [ first, last ] )
+    var1          = thing
+    variable_two  = other_thing
+    {foo:'bar'}
+    {foo => 'bar'}
+~~~
+{: .language-ruby}
+
+
 
 ### Comments:
 
