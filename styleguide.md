@@ -565,7 +565,6 @@ layout: default
     # No
     set :ssh_options, {forward_agent: true}
 ~~~
-{: .language-ruby}
 
 * Single space between hash key's `:` and the value.
 
@@ -585,7 +584,6 @@ layout: default
     {foo:'bar'}
     {foo => 'bar'}
 ~~~
-{: .language-ruby}
 
 
 ### Comments:
