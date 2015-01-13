@@ -588,7 +588,6 @@ layout: default
 {: .language-ruby}
 
 
-
 ### Comments:
 
 * Encourage discoverablility and introspection over explicit declaration.  The
