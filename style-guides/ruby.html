@@ -95,7 +95,7 @@ require 'gosu'
 require_relative 'lib/duckhunt/bloodhound'
 # NOTE: ostruct is STDLIB, gosu is a gem, the other is local to this library
 
-if  == __FILE__
+if $0 == __FILE__
   mechanics = OpenStruct.new(kb: Gosu.has_keyboard?, mouse: Gosu.has_mouse?))
   game = Duckhunt.new(mechanics)
   game.main_character = Duckhunt::Bloodhound
@@ -345,7 +345,7 @@ end
 
 # Life is random (and absurd), give users a number to check with.
 def get_attempt
-  if guess = random(2012)
+  if guess=random(2012)
     guess += 1
   end
   guess
@@ -525,11 +525,11 @@ four spaces into the method being called.</li>
     <p>Closing <code>)</code>, <code>}</code>, and <code>]</code> should not be on a line by themselves.</p>
 
     <pre><code># Yes
-if score = scoreboard.value(team) and score &gt; 0
+if score=scoreboard.value(team) and score &gt; 0
   return "#{team} scored #{score} goals"
 end
 
-time_limit_reached = scoreboard.game_time &lt;= 0
+time_limit_reached=scoreboard.game_time &lt;= 0
 mercy_rule_invoked = scoreboard.score_difference &gt; 10
 if time_limit_reached or mercy_rule_invoked
   game_over_man!
